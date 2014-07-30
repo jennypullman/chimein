@@ -2,10 +2,22 @@
 class HomeViewModel {
     selection: string = "";
     constantViewModel: ConstantViewModel;
-    constructor(constantViewModel: ConstantViewModel) {
+    azureHelper: AzureHelper;
+    groups: KnockoutObservableArray<any>;
+    constructor(constantViewModel: ConstantViewModel, azureHelper: AzureHelper) {
         this.constantViewModel = constantViewModel;
+        this.azureHelper = azureHelper;
+        this.groups = ko.observableArray([]);
+        for (var i = 0; i < azureHelper.azureClient.getTable("groupUsers").length; i++) {
+            this.groups.push(azureHelper.groupUsers[i]);
+            alert(this.groups[i]);
+        }
     }
     OnShowAllGroups(): void {
+        for (var group in this.groups) {
+            console.log(group.id);
+        }
+        document.getElementById("groupList").style.display = "inline";
         alert("showing all groups");
     }
     OnShowGroupsByDate(): void {
@@ -41,10 +53,13 @@ class HomeViewModel {
     }
     OnPickGroup(): void {
         alert("picking group");
-        document.getElementById("homeView").style.visibility = "hidden";
+        document.getElementById("homeView").style.display = "none";
         this.constantViewModel.previousPage.push(viewModel.HOMEVIEWMODEL);
-        document.getElementById("groupView").style.visibility = "visible";
+        document.getElementById("groupView").style.display = "inline";
         this.constantViewModel.currentPage = viewModel.GROUPVIEWMODEL;
+    }
+    getGroups(): Microsoft.WindowsAzure.MobileServiceTable {
+        return this.azureHelper.groups;
     }
     Refresh(): void {
     }

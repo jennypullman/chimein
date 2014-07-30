@@ -10,32 +10,32 @@
         }
         switch (this.currentPage) {
             case 1 /* GROUPVIEWMODEL */:
-                document.getElementById("groupView").style.visibility = "hidden";
+                document.getElementById("groupView").style.display = "none";
                 break;
             case 0 /* HOMEVIEWMODEL */:
-                document.getElementById("homeView").style.visibility = "hidden";
+                document.getElementById("homeView").style.display = "none";
                 break;
             case 3 /* POLLBOARDVIEWMODEL */:
-                document.getElementById("pollBoardView").style.visibility = "hidden";
+                document.getElementById("pollView").style.display = "none";
                 break;
             case 2 /* QUESTIONBOARDVIEWMODEL */:
-                document.getElementById("questionBoardView").style.visibility = "hidden";
+                document.getElementById("questionView").style.display = "none";
                 break;
         }
         this.forwardPage.push(this.currentPage);
         this.currentPage = this.previousPage.pop();
         switch (this.currentPage) {
             case 1 /* GROUPVIEWMODEL */:
-                document.getElementById("groupView").style.visibility = "visible";
+                document.getElementById("groupView").style.display = "inline";
                 break;
             case 0 /* HOMEVIEWMODEL */:
-                document.getElementById("homeView").style.visibility = "visible";
+                document.getElementById("homeView").style.display = "inline";
                 break;
             case 3 /* POLLBOARDVIEWMODEL */:
-                document.getElementById("pollBoardView").style.visibility = "visible";
+                document.getElementById("pollView").style.display = "inline";
                 break;
             case 2 /* QUESTIONBOARDVIEWMODEL */:
-                document.getElementById("questionBoardView").style.visibility = "visible";
+                document.getElementById("questionView").style.display = "inline";
                 break;
         }
     };

@@ -1,0 +1,14 @@
+C:\ChimeIn\ChimeInMobile\ChimeInMobile\bld\Debug\platforms\wp8\Bin\Debug\ApplicationIcon.png
+C:\ChimeIn\ChimeInMobile\ChimeInMobile\bld\Debug\platforms\wp8\Bin\Debug\Background.png
+C:\ChimeIn\ChimeInMobile\ChimeInMobile\bld\Debug\platforms\wp8\Bin\Debug\io.cordova.ChimeInMobile.dll
+C:\ChimeIn\ChimeInMobile\ChimeInMobile\bld\Debug\platforms\wp8\Bin\Debug\io.cordova.ChimeInMobile.pdb
+C:\ChimeIn\ChimeInMobile\ChimeInMobile\bld\Debug\platforms\wp8\Bin\Debug\AppManifest.xaml
+C:\ChimeIn\ChimeInMobile\ChimeInMobile\bld\Debug\platforms\wp8\Bin\Debug\Properties\WMAppManifest.xml
+C:\ChimeIn\ChimeInMobile\ChimeInMobile\bld\Debug\platforms\wp8\Bin\Debug\CordovaAppProj_Debug_AnyCPU.xap
+C:\ChimeIn\ChimeInMobile\ChimeInMobile\bld\Debug\platforms\wp8\obj\Debug\App.g.cs
+C:\ChimeIn\ChimeInMobile\ChimeInMobile\bld\Debug\platforms\wp8\obj\Debug\cordovalib\CordovaView.g.cs
+C:\ChimeIn\ChimeInMobile\ChimeInMobile\bld\Debug\platforms\wp8\obj\Debug\MainPage.g.cs
+C:\ChimeIn\ChimeInMobile\ChimeInMobile\bld\Debug\platforms\wp8\obj\Debug\io.cordova.ChimeInMobile.g.resources
+C:\ChimeIn\ChimeInMobile\ChimeInMobile\bld\Debug\platforms\wp8\obj\Debug\io.cordova.ChimeInMobile.dll
+C:\ChimeIn\ChimeInMobile\ChimeInMobile\bld\Debug\platforms\wp8\obj\Debug\io.cordova.ChimeInMobile.pdb
+C:\ChimeIn\ChimeInMobile\ChimeInMobile\bld\Debug\platforms\wp8\obj\Debug\XapCacheFile.xml
