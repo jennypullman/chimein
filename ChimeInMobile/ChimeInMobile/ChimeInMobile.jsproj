@@ -122,6 +122,11 @@
     </Content>
     <TypeScriptCompile Include="scripts\AzureHelper.ts" />
     <Content Include="scripts\knockout-3.1.0.js" />
+    <TypeScriptCompile Include="scripts\ConstantViewModel.ts" />
+    <TypeScriptCompile Include="scripts\HomeViewModel.ts" />
+    <TypeScriptCompile Include="scripts\QuestionBoardViewModel.ts" />
+    <TypeScriptCompile Include="scripts\PollBoardViewModel.ts" />
+    <TypeScriptCompile Include="scripts\GroupViewModel.ts" />
     <TypeScriptCompile Include="scripts\index.ts" />
     <Content Include="css\index.css" />
     <Content Include="packages.config" />

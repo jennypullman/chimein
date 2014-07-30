@@ -5,30 +5,48 @@
 module ChimeInMobile {
     "use strict";
 
-    export module Application {
-        export function initialize() {
-            document.addEventListener('deviceready', onDeviceReady, false);
+    export var application;
+    class Application {
+        constantViewModel: ConstantViewModel;
+        initialize(): void {
+            document.addEventListener('deviceready', () => { this.onDeviceReady(); }, false);
+            this.constantViewModel = new ConstantViewModel();
         }
 
-        function onDeviceReady() {
+        onDeviceReady(): void {
             // Handle the Cordova pause and resume events
-            document.addEventListener('pause', onPause, false);
-            document.addEventListener('resume', onResume, false);
+            document.addEventListener('pause', () => { this.onPause(); }, false);
+            document.addEventListener('resume', () => { this.onResume(); }, false);
 
             // TODO: Cordova has been loaded. Perform any initialization that requires Cordova here.
+            var azureHelper = new AzureHelper();
+            azureHelper.login();
+
+            var groupViewModel = new GroupViewModel(this.constantViewModel);
+            var homeViewModel = new HomeViewModel(this.constantViewModel);
+            var questionBoardViewModel = new QuestionBoardViewModel(this.constantViewModel);
+            var pollBoardViewModel = new PollBoardViewModel(this.constantViewModel);
+            ko.applyBindings(groupViewModel, document.getElementById("groupViewHeader"));
+            ko.applyBindings(homeViewModel, document.getElementById("createGroup"));
+            ko.applyBindings(homeViewModel, document.getElementById("showGroups"));
+            ko.applyBindings(homeViewModel, document.getElementById("pickGroup"));
+            ko.applyBindings(groupViewModel, document.getElementById("questionBoard"));
+            ko.applyBindings(groupViewModel, document.getElementById("pollBoard"));
+            ko.applyBindings(this.constantViewModel, document.getElementById("backButton"));
         }
 
-        function onPause() {
+        onPause(): void {
             // TODO: This application has been suspended. Save application state here.
         }
 
-        function onResume() {
+        onResume(): void {
             // TODO: This application has been reactivated. Restore application state here.
         }
 
     }
 
     window.onload = function () {
-        Application.initialize();
+        application = new Application();
+        application.initialize();
     }
 }

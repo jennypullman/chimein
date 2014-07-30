@@ -16,15 +16,40 @@
     <!--<script src="./services/mobile services/ChimeIn/service.js"></script>-->
     <script type='text/javascript' src='scripts/knockout-3.1.0.js'></script>
     <script src="scripts/AzureHelper.js"></script>
+    <script src="scripts/groupViewModel.js"></script>
+    <script src="scripts/HomeViewModel.js"></script>
+    <script src="scripts/QuestionBoardViewModel.js"></script>
+    <script src="scripts/PollBoardViewModel.js"></script>
+    <script src="scripts/ConstantViewModel.js"></script>
     <script src="scripts/index.js"></script>
-    <div style="visibility:visible" data-bind="visible:onShowGroupPage">
-        <div data-bind="text:groupName"></div>
+    <button id="backButton" data-bind="event:{click:OnBack}">Back</button>
+    <form id="searchBar">
+    Search: <input type="text" />
+    </form>
+    <div id="homeView">
+        <select id="showGroups" data-bind="event:{change:OnChangeGroups}">
+            <option id="allGroups">All Groups</option>
+            <option id="byDate">Show Groups By Date</option>
+            <option id="byCategory">Show Groups By Category</option>
+            <option id="favoriteGroups">Favorite Groups</option>
+        </select>
+        <button id="createGroup" data-bind="event:{click:OnCreateGroup}">Create Group</button>
+        <button id="pickGroup" data-bind="event:{click:OnPickGroup}">Pick Group</button>
     </div>
+    <div id="groupView" style="visibility:hidden">
+        <div id="groupViewHeader" data-bind="text: groupName"></div>
+        <ul id="groupViewTabs">
+            <li id="questionBoard" data-bind="click:OnClickQuestionBoard" style="cursor:pointer">Question Board</li>
+            <li id="pollBoard" data-bind="click:OnClickPollBoard" style="cursor:pointer">Poll Board</li>
+        </ul>
+    </div>
+    <div id="questionView" style="visibility:hidden"></div>
+    <div id="pollView" style="visibility:hidden"></div>
     <script type="text/javascript">
-        ko.applyBindings({
-            onShowGroupPage: function () { alert("yay") },
-            groupName:"groupName"
-        })
+        //ko.applyBindings({
+        //    onShowGroupPage: function () { alert("yay") },
+        //    groupName: "groupName"
+        //})
     </script>
 </body>
 </html>
