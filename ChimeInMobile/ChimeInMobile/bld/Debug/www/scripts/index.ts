@@ -7,10 +7,15 @@ module ChimeInMobile {
 
     export var application;
     class Application {
+<<<<<<< HEAD
         constantViewModel: ConstantViewModel;
         initialize(): void {
             document.addEventListener('deviceready', () => { this.onDeviceReady(); }, false);
             this.constantViewModel = new ConstantViewModel();
+=======
+        initialize(): void {
+            document.addEventListener('deviceready', () => { this.onDeviceReady(); }, false);
+>>>>>>> 7f2f88842e97cb7847e685c2f1700bce7d10bf84
         }
 
         onDeviceReady(): void {
@@ -20,6 +25,7 @@ module ChimeInMobile {
 
             // TODO: Cordova has been loaded. Perform any initialization that requires Cordova here.
             var azureHelper = new AzureHelper();
+<<<<<<< HEAD
             azureHelper.login();
 
             var groupViewModel = new GroupViewModel(this.constantViewModel);
@@ -33,6 +39,11 @@ module ChimeInMobile {
             ko.applyBindings(groupViewModel, document.getElementById("questionBoard"));
             ko.applyBindings(groupViewModel, document.getElementById("pollBoard"));
             ko.applyBindings(this.constantViewModel, document.getElementById("backButton"));
+=======
+            azureHelper.getClient();
+            //azureHelper.getGroups();
+            azureHelper.login();
+>>>>>>> 7f2f88842e97cb7847e685c2f1700bce7d10bf84
         }
 
         onPause(): void {

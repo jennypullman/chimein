@@ -3,5 +3,5 @@ var ChimeInClient
 document.addEventListener("deviceready", function () {    
     ChimeInClient = new WindowsAzure.MobileServiceClient(
                     "https://chimein.azure-mobile.net/",
-                    "SmtMiptFTkxedMRKLwXOKitBIQxUlW95");
+                    "JXYobPzySaNOpAAksQlMfAEUzGQcaB35");
 });
