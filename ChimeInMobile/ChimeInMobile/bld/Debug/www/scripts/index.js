@@ -18,9 +18,9 @@ var ChimeInMobile;
             this.constantViewModel = new ConstantViewModel();
         };
 
-        Application.prototype.applyBindings = function (azureHelper) {
+        Application.prototype.applyBindings = function (user, azureHelper) {
             var groupViewModel = new GroupViewModel(this.constantViewModel);
-            var homeViewModel = new HomeViewModel(this.constantViewModel, azureHelper);
+            var homeViewModel = new HomeViewModel(this.constantViewModel, azureHelper, user);
             var questionBoardViewModel = new QuestionBoardViewModel(this.constantViewModel);
             var pollBoardViewModel = new PollBoardViewModel(this.constantViewModel);
             ko.applyBindings(groupViewModel, document.getElementById("groupViewHeader"));
@@ -35,6 +35,7 @@ var ChimeInMobile;
         Application.prototype.onDeviceReady = function () {
             var _this = this;
             // Handle the Cordova pause and resume events
+            alert("in device ready");
             document.addEventListener('pause', function () {
                 _this.onPause();
             }, false);
@@ -45,13 +46,15 @@ var ChimeInMobile;
             // TODO: Cordova has been loaded. Perform any initialization that requires Cordova here.
             var azureHelper = new AzureHelper();
             azureHelper.getClient(function (client) {
-                //alert("client worked");
-                azureHelper.login(function (user) {
-                    //alert("user worked");
-                    _this.applyBindings(azureHelper);
+                alert("client worked");
+                azureHelper.login(client, function (user) {
+                    alert("user worked");
+                    alert("call back user: " + user);
+                    _this.applyBindings(user, azureHelper);
                 });
             });
-            //alert("all logged in");
+
+            alert("all logged in");
         };
 
         Application.prototype.onPause = function () {

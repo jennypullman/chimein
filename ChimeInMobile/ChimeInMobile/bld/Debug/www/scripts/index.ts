@@ -13,9 +13,9 @@ module ChimeInMobile {
             this.constantViewModel = new ConstantViewModel();
         }
 
-        applyBindings(azureHelper: AzureHelper): void {
+        applyBindings(user: string, azureHelper: AzureHelper): void {
             var groupViewModel = new GroupViewModel(this.constantViewModel);
-            var homeViewModel = new HomeViewModel(this.constantViewModel, azureHelper);
+            var homeViewModel = new HomeViewModel(this.constantViewModel, azureHelper, user);
             var questionBoardViewModel = new QuestionBoardViewModel(this.constantViewModel);
             var pollBoardViewModel = new PollBoardViewModel(this.constantViewModel);
             ko.applyBindings(groupViewModel, document.getElementById("groupViewHeader"));
@@ -29,20 +29,22 @@ module ChimeInMobile {
 
         onDeviceReady(): void {
             // Handle the Cordova pause and resume events
+            alert("in device ready");
             document.addEventListener('pause', () => { this.onPause(); }, false);
             document.addEventListener('resume', () => { this.onResume(); }, false);
 
             // TODO: Cordova has been loaded. Perform any initialization that requires Cordova here.
             var azureHelper = new AzureHelper();
             azureHelper.getClient((client) => {
-                //alert("client worked");
-                azureHelper.login((user) => {
-                    //alert("user worked");
-                    this.applyBindings(azureHelper);
+                alert("client worked");
+                azureHelper.login(client, (user) => {
+                    alert("user worked");
+                    alert("call back user: " + user);
+                    this.applyBindings(user, azureHelper);
                 });
             });
             
-            //alert("all logged in");
+            alert("all logged in");
         }
 
         onPause(): void {

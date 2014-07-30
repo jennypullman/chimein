@@ -1,44 +1,56 @@
 ﻿var AzureHelper = (function () {
+    //loggedIn: boolean;
     function AzureHelper() {
     }
     AzureHelper.prototype.getClient = function (callback) {
+        alert("in get client");
         if (this.azureClient) {
+            alert("out get client if");
             callback(this.azureClient);
         } else {
             this.azureClient = new WindowsAzure.MobileServiceClient("https://chimein.azure-mobile.net/", "JXYobPzySaNOpAAksQlMfAEUzGQcaB35");
+            alert("out get client");
             callback(this.azureClient);
         }
     };
 
-    AzureHelper.prototype.login = function (callback) {
+    AzureHelper.prototype.login = function (azureClient, callback) {
         var _this = this;
+        alert("in login");
         if (this.user) {
+            alert("in get user");
             callback(this.user);
         } else {
-            //alert("in login");
-            this.azureClient.login("facebook").then(function (results) {
-                //alert("in facebook");
+            alert("in else login");
+            alert(this.azureClient);
+            azureClient.login("facebook").then(function (results) {
+                alert("in facebook");
                 _this.user = results.userId;
+                alert("in facebook, user: " + _this.user);
+
+                //this.loggedIn = true;
                 _this.getUsers();
-                _this.getGroupUsers();
 
                 _this.users.where({ uid: results.userId }).read().then(function (success) {
                     if (success.length > 0) {
                         console.log("User ID" + _this.user);
                         console.log("in success");
-                        _this.user = success[0];
+                        _this.user = success[0].uid;
+                        alert("out login if");
+                        callback(_this.user);
                     } else {
                         console.log("in else");
                         _this.users.insert({ uid: results.userId }).done(function () {
-                            //alert("IT WORKED");
+                            alert("IT WORKED");
                         });
+                        alert("out login else");
+                        callback(_this.user);
                     }
                 }, function (error) {
                     console.log("In error");
                 });
             }, function (error) {
             });
-            callback(this.user);
         }
     };
 

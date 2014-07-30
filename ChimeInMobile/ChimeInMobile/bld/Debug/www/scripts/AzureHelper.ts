@@ -4,52 +4,63 @@
     users: Microsoft.WindowsAzure.MobileServiceTable;
     groupUsers: Microsoft.WindowsAzure.MobileServiceTable;
     user: string;
+    //loggedIn: boolean;
 
     constructor() {
     }
 
     getClient(callback: (client: Microsoft.WindowsAzure.MobileServiceClient) => void): void {
+        alert("in get client");
         if (this.azureClient) {
+            alert("out get client if");
             callback(this.azureClient);
         }
         else {
             this.azureClient = new WindowsAzure.MobileServiceClient(
                 "https://chimein.azure-mobile.net/",
                 "JXYobPzySaNOpAAksQlMfAEUzGQcaB35");
+            alert("out get client");
             callback(this.azureClient);
         }
     }
 
-    login(callback: (user: any) => void): void {
+    login(azureClient: Microsoft.WindowsAzure.MobileServiceClient, callback: (user: any) => void): void {
+        alert("in login");
         if (this.user) {
+            alert("in get user");
             callback(this.user);
         }
         else {
-            //alert("in login");
-            this.azureClient.login("facebook").then((results) => {
-                //alert("in facebook");
+            alert("in else login");
+            alert(this.azureClient);
+            azureClient.login("facebook").then((results) => {
+                alert("in facebook");
                 this.user = results.userId;
+                alert("in facebook, user: " + this.user);
+                //this.loggedIn = true;
                 this.getUsers();
-                this.getGroupUsers();
 
                 this.users.where({ uid: results.userId }).read().then((success) => {
                     if (success.length > 0) {
                         console.log("User ID" + this.user);
                         console.log("in success");
-                        this.user = success[0];
+                        this.user = success[0].uid;
+                        alert("out login if");
+                        callback(this.user);
                     }
                     else {
                         console.log("in else");
                         this.users.insert({ uid: results.userId }).done(() => {
-                            //alert("IT WORKED");
+                            alert("IT WORKED");
                         });
+                        alert("out login else");
+                        callback(this.user);
                     }
                 }, (error) => {
                         console.log("In error");
                     })
 
             }, (error) => { });
-            callback(this.user);
         }
     }
 
