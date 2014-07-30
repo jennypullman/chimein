@@ -2,27 +2,28 @@
 class GroupViewModel {
     groupName: KnockoutObservable<string>; // array
     constantViewModel: ConstantViewModel;
-    constructor(constantViewModel: ConstantViewModel) {
+    azureHelper: AzureHelper;
+    constructor(constantViewModel: ConstantViewModel, azureHelper:AzureHelper) {
         this.constantViewModel = constantViewModel;
+        this.azureHelper = azureHelper;
         this.groupName = ko.observable("groupName"); // array
     }
 
-    getGroup(): void {
-        
-    }
     OnShowGroup(): void {
         alert("yay");
     }
     OnClickQuestionBoard(): void {
         alert("Opening question board.");
-        document.getElementById("groupView").style.visibility = "hidden";
-        document.getElementById("questionView").style.visibility = "visible";
+        document.getElementById("groupView").style.display = "none";
+        this.constantViewModel.previousPage.push(viewModel.GROUPVIEWMODEL);
+        document.getElementById("questionView").style.display = "inline";
+        this.constantViewModel.currentPage = viewModel.QUESTIONBOARDVIEWMODEL;
     }
     OnClickPollBoard(): void {
         alert("Opening poll board.");
-        document.getElementById("groupView").style.visibility = "hidden";
+        document.getElementById("groupView").style.display = "none";
         this.constantViewModel.previousPage.push(viewModel.GROUPVIEWMODEL);
-        document.getElementById("pollView").style.visibility = "visible";
+        document.getElementById("pollView").style.display = "inline";
         this.constantViewModel.currentPage = viewModel.POLLBOARDVIEWMODEL;
     }
 } 

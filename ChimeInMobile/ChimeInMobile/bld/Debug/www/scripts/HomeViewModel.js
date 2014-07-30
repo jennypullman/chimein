@@ -1,10 +1,15 @@
 ﻿///<reference path='../scripts/ConstantViewModel.ts' />
 var HomeViewModel = (function () {
+<<<<<<< HEAD
     function HomeViewModel(constantViewModel, azureHelper, user) {
         var _this = this;
+=======
+    function HomeViewModel(constantViewModel, azureHelper) {
+>>>>>>> testiiiinnnng
         this.selection = "";
         alert("in constructor");
         this.constantViewModel = constantViewModel;
+<<<<<<< HEAD
         var groupsTable = azureHelper.azureClient.getTable("groupUsers");
         alert("azure user: " + user);
 
@@ -24,8 +29,20 @@ var HomeViewModel = (function () {
         }, function (error) {
             alert("in homes view model: " + error);
         });
+=======
+        this.azureHelper = azureHelper;
+        this.groups = ko.observableArray([]);
+        for (var i = 0; i < azureHelper.azureClient.getTable("groupUsers").length; i++) {
+            this.groups.push(azureHelper.groupUsers[i]);
+            alert(this.groups[i]);
+        }
+>>>>>>> testiiiinnnng
     }
     HomeViewModel.prototype.OnShowAllGroups = function () {
+        for (var group in this.groups) {
+            console.log(group.id);
+        }
+        document.getElementById("groupList").style.display = "inline";
         alert("showing all groups");
     };
     HomeViewModel.prototype.OnShowGroupsByDate = function () {
@@ -61,10 +78,13 @@ var HomeViewModel = (function () {
     };
     HomeViewModel.prototype.OnPickGroup = function () {
         alert("picking group");
-        document.getElementById("homeView").style.visibility = "hidden";
+        document.getElementById("homeView").style.display = "none";
         this.constantViewModel.previousPage.push(0 /* HOMEVIEWMODEL */);
-        document.getElementById("groupView").style.visibility = "visible";
+        document.getElementById("groupView").style.display = "inline";
         this.constantViewModel.currentPage = 1 /* GROUPVIEWMODEL */;
+    };
+    HomeViewModel.prototype.getGroups = function () {
+        return this.azureHelper.groups;
     };
     HomeViewModel.prototype.Refresh = function () {
     };

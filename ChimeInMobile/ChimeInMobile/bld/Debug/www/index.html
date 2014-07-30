@@ -43,14 +43,26 @@
             </tbody>
         </table>
     </div>
-    <div id="groupView" style="visibility:hidden">
+    <div id="groupView" style="display:none">
         <div id="groupViewHeader" data-bind="text: groupName"></div>
         <ul id="groupViewTabs">
             <li id="questionBoard" data-bind="click:OnClickQuestionBoard" style="cursor:pointer">Question Board</li>
             <li id="pollBoard" data-bind="click:OnClickPollBoard" style="cursor:pointer">Poll Board</li>
         </ul>
+
     </div>
+<<<<<<< HEAD
     <div id="questionView" style="visibility:hidden"></div>
     <div id="pollView" style="visibility:hidden"></div>
+=======
+    <div id="questionView" style="display:none"></div>
+    <div id="pollView" style="display:inline"></div>
+    <script type="text/javascript">
+        //ko.applyBindings({
+        //    onShowGroupPage: function () { alert("yay") },
+        //    groupName: "groupName"
+        //})
+    </script>
+>>>>>>> testiiiinnnng
 </body>
 </html>

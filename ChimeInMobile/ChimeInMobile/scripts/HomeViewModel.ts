@@ -2,10 +2,12 @@
 class HomeViewModel {
     selection: string = "";
     constantViewModel: ConstantViewModel;
+    azureHelper: AzureHelper;
     groups: KnockoutObservableArray<any>;
     constructor(constantViewModel: ConstantViewModel, azureHelper: AzureHelper, user) {
         alert("in constructor");
         this.constantViewModel = constantViewModel;
+        this.azureHelper = azureHelper;
         var groupsTable = azureHelper.azureClient.getTable("groupUsers");
         alert("azure user: " + user);
         //alert("groups table: " + groupsTable);
@@ -26,6 +28,10 @@ class HomeViewModel {
         });
     }
     OnShowAllGroups(): void {
+        for (var group in this.groups) {
+            console.log(group.id);
+        }
+        document.getElementById("groupList").style.display = "inline";
         alert("showing all groups");
     }
     OnShowGroupsByDate(): void {
@@ -61,10 +67,13 @@ class HomeViewModel {
     }
     OnPickGroup(): void {
         alert("picking group");
-        document.getElementById("homeView").style.visibility = "hidden";
+        document.getElementById("homeView").style.display = "none";
         this.constantViewModel.previousPage.push(viewModel.HOMEVIEWMODEL);
-        document.getElementById("groupView").style.visibility = "visible";
+        document.getElementById("groupView").style.display = "inline";
         this.constantViewModel.currentPage = viewModel.GROUPVIEWMODEL;
+    }
+    getGroups(): Microsoft.WindowsAzure.MobileServiceTable {
+        return this.azureHelper.groups;
     }
     Refresh(): void {
     }
