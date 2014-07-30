@@ -116,6 +116,10 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="index.html" />
+    <Content Include="services\mobile services\ChimeIn\service.js">
+      <ConnectedServiceReference>ChimeIn</ConnectedServiceReference>
+    </Content>
+    <TypeScriptCompile Include="scripts\AzureHelper.ts" />
     <TypeScriptCompile Include="scripts\index.ts" />
     <Content Include="css\index.css" />
     <Content Include="packages.config" />
@@ -160,6 +164,7 @@
     <Content Include="res\screens\ios\screen-iphone-portrait-2x.png" />
     <Content Include="res\screens\windows8\splashscreen.png" />
     <Content Include="res\screens\wp8\screen-portrait.jpg" />
+    <TypeScriptCompile Include="scripts\typings\AzureMobileServicesClient\AzureMobileServicesClient.d.ts" />
     <TypeScriptCompile Include="scripts\typings\cordova\cordova.d.ts" />
     <TypeScriptCompile Include="scripts\typings\cordova\plugins\BatteryStatus.d.ts" />
     <TypeScriptCompile Include="scripts\typings\cordova\plugins\Camera.d.ts" />
