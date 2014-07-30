@@ -13,6 +13,9 @@
     <script src="cordova.js"></script>
 
     <!-- ChimeIn references -->
+    <script src="scripts/jquery-2.1.1.min.js"></script>
+    <script src="scripts/jquery-2.1.1.js"></script>
+    <script src="scripts/bootstrap.js"></script>
     <script src="./services/mobile services/ChimeIn/service.js"></script>
     <script type='text/javascript' src='scripts/knockout-3.1.0.js'></script>
     <script src="scripts/AzureHelper.js"></script>
@@ -22,33 +25,67 @@
     <script src="scripts/PollBoardViewModel.js"></script>
     <script src="scripts/ConstantViewModel.js"></script>
     <script src="scripts/index.js"></script>
-    <button id="backButton" data-bind="event:{click:OnBack}">Back</button>
-    <form id="searchBar">
-    Search: <input type="text" />
+    <link href="Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <nav class="navbar navbar-inverse" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#" id="goHome" data-bind="event:{click:OnGoHome}">Chime In</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#"></a></li>
+                <li><a href="#" id="backButton" data-bind="event:{click:OnBack}">Back</a></li>
+            </ul>
+            <form class="navbar-form navbar-left" role="search">
+                <div class="input-group">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span> </span>
+                    <input type="text" class="form-control" placeholder="Groups">
+                </div>
+                <!--<button type="submit" class="btn btn-default">Submit</button>-->
     </form>
+        </div><!-- /.navbar-collapse -->
+        <!--<button type="button" class="btn btn-default navbar-btn" id="backButton" data-bind="event:{click:OnBack}">Back</button>-->
+    </nav>
     <div id="homeView">
-        <select id="showGroups" data-bind="event:{change:OnChangeGroups}">
-            <option id="allGroups">All Groups</option>
-            <option id="byDate">Show Groups By Date</option>
-            <option id="byCategory">Show Groups By Category</option>
-            <option id="favoriteGroups">Favorite Groups</option>
-        </select>
-        <button id="createGroup" data-bind="event:{click:OnCreateGroup}">Create Group</button>
+        <div class="btn-group">
+            <button type="button" class="btn btn-default" id="createGroup" data-bind="event:{click:OnCreateGroup}">Create Group</button>
+            <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    Groups
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" id="showGroups">
+                    <li><a href="#" id="allGroups" data-bind="event:{click:OnShowAllGroups}">All Groups</a></li>
+                    <li><a href="#" id="byDate" data-bind="event:{click:OnShowGroupsByDate}">Show Groups By Date</a></li>
+                    <li><a href="#" id="byCategory" data-bind="event:{click:OnShowGroupsByCategory}">Show Groups By Category</a></li>
+                    <li><a href="#" id="favoriteGroups" data-bind="event:{click:OnShowFavoriteGroups}">Favorite Groups</a></li>
+                </ul>
+            </div>
+        </div>
         <button id="pickGroup" data-bind="event:{click:OnPickGroup}">Pick Group</button>
         <table>
-            <tbody id="groupList" data-bind="foreach: groups" style="display:none">
-                <tr>
-                    <td data-bind="text: id"></td>
-                </tr>
+            <tbody id="groupList">
             </tbody>
         </table>
     </div>
     <div id="groupView" style="display:none">
-        <div id="groupViewHeader" data-bind="text: groupName"></div>
-        <ul id="groupViewTabs">
-            <li id="questionBoard" data-bind="click:OnClickQuestionBoard" style="cursor:pointer">Question Board</li>
-            <li id="pollBoard" data-bind="click:OnClickPollBoard" style="cursor:pointer">Poll Board</li>
-        </ul>
+        <div class="jumbotron">
+            <h1 id="groupViewHeader" data-bind="text: groupName"></h1>
+        </div>
+        <div class="btn-group" id="groupViewTabs">
+            <button type="button" class="btn btn-default" id="questionBoard" data-bind="click:OnClickQuestionBoard">Question Board</button>
+            <button type="button" class="btn btn-default" id="pollBoard" data-bind="click:OnClickPollBoard">Poll Board</button>
+        </div>
 
     </div>
     <div id="questionView" style="display:none"></div>

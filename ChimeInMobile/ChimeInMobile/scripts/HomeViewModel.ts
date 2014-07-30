@@ -35,7 +35,7 @@ class HomeViewModel {
             }
         }, (error) => {
             alert("in homes view model: " + error);
-        });*/
+        });
     }
     OnShowAllGroups(): void {
         for (var group in this.groups) {
