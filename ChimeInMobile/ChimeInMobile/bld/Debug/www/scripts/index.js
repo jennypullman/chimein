@@ -6,31 +6,54 @@ var ChimeInMobile;
 (function (ChimeInMobile) {
     "use strict";
 
-    (function (Application) {
-        function initialize() {
-            document.addEventListener('deviceready', onDeviceReady, false);
+    ChimeInMobile.application;
+    var Application = (function () {
+        function Application() {
         }
-        Application.initialize = initialize;
+        Application.prototype.initialize = function () {
+            var _this = this;
+            document.addEventListener('deviceready', function () {
+                _this.onDeviceReady();
+            }, false);
+        };
 
-        function onDeviceReady() {
+        Application.prototype.onDeviceReady = function () {
+            var _this = this;
             // Handle the Cordova pause and resume events
-            document.addEventListener('pause', onPause, false);
-            document.addEventListener('resume', onResume, false);
+            document.addEventListener('pause', function () {
+                _this.onPause();
+            }, false);
+            document.addEventListener('resume', function () {
+                _this.onResume();
+            }, false);
+
             // TODO: Cordova has been loaded. Perform any initialization that requires Cordova here.
-        }
+            var azureHelper = new AzureHelper();
+            azureHelper.login();
 
-        function onPause() {
+            var groupViewModel = new GroupViewModel();
+            var homeViewModel = new HomeViewModel();
+            var questionBoardViewModel = new QuestionBoardViewModel();
+            var pollBoardViewModel = new PollBoardViewModel();
+            ko.applyBindings(groupViewModel, document.getElementById("groupViewHeader"));
+            ko.applyBindings(homeViewModel, document.getElementById("createGroup"));
+            ko.applyBindings(homeViewModel, document.getElementById("showGroups"));
+            ko.applyBindings(homeViewModel, document.getElementById("pickGroup"));
+        };
+
+        Application.prototype.onPause = function () {
             // TODO: This application has been suspended. Save application state here.
-        }
+        };
 
-        function onResume() {
+        Application.prototype.onResume = function () {
             // TODO: This application has been reactivated. Restore application state here.
-        }
-    })(ChimeInMobile.Application || (ChimeInMobile.Application = {}));
-    var Application = ChimeInMobile.Application;
+        };
+        return Application;
+    })();
 
     window.onload = function () {
-        Application.initialize();
+        ChimeInMobile.application = new Application();
+        ChimeInMobile.application.initialize();
     };
 })(ChimeInMobile || (ChimeInMobile = {}));
 //# sourceMappingURL=index.js.map

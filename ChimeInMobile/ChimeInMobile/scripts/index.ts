@@ -18,7 +18,16 @@ module ChimeInMobile {
 
             // TODO: Cordova has been loaded. Perform any initialization that requires Cordova here.
             var azureHelper = new AzureHelper();
-            azureHelper.login(azureHelper.getGroups);
+            azureHelper.login();
+
+            var groupViewModel = new GroupViewModel();
+            var homeViewModel = new HomeViewModel();
+            var questionBoardViewModel = new QuestionBoardViewModel();
+            var pollBoardViewModel = new PollBoardViewModel();
+            ko.applyBindings(groupViewModel, document.getElementById("groupViewHeader"));
+            ko.applyBindings(homeViewModel, document.getElementById("createGroup"));
+            ko.applyBindings(homeViewModel, document.getElementById("showGroups"));
+            ko.applyBindings(homeViewModel, document.getElementById("pickGroup"));
         }
 
         onPause(): void {
