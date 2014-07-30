@@ -40,6 +40,26 @@
                 break;
         }
     }
+    OnGoHome() {
+        this.previousPage.push(this.currentPage);
+        switch (this.currentPage) {
+            case viewModel.GROUPVIEWMODEL:
+                document.getElementById("groupView").style.display = "none";
+                break;
+            case viewModel.HOMEVIEWMODEL:
+                document.getElementById("homeView").style.display = "none";
+                break;
+            case viewModel.POLLBOARDVIEWMODEL:
+                document.getElementById("pollView").style.display = "none";
+                break;
+            case viewModel.QUESTIONBOARDVIEWMODEL:
+                document.getElementById("questionView").style.display = "none";
+                break;
+        }
+        this.currentPage = viewModel.HOMEVIEWMODEL;
+        document.getElementById("homeView").style.display = "inline";
+
+    }
 } 
 enum viewModel {
     HOMEVIEWMODEL,

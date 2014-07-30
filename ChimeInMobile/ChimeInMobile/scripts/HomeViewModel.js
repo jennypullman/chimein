@@ -1,48 +1,35 @@
 ﻿///<reference path='../scripts/ConstantViewModel.ts' />
 var HomeViewModel = (function () {
-<<<<<<< HEAD
-    function HomeViewModel(constantViewModel, azureHelper, user) {
-        var _this = this;
-=======
     function HomeViewModel(constantViewModel, azureHelper) {
->>>>>>> testiiiinnnng
         this.selection = "";
         alert("in constructor");
         this.constantViewModel = constantViewModel;
-<<<<<<< HEAD
+        this.azureHelper = azureHelper;
         var groupsTable = azureHelper.azureClient.getTable("groupUsers");
-        alert("azure user: " + user);
-
+        /*alert("azure user: " + user);
         //alert("groups table: " + groupsTable);
         //alert(groupsTable.length);
         //for (var i = 0; i < groupsTable.length; i++) {
         //    alert(groupsTable[i]);
         //}
-        groupsTable.where({ uid: user }).read().then(function (success) {
-            alert("in success: " + success);
-            if (success.length > 0) {
-                for (var i = 0; i < success.length; i++) {
-                    _this.groups.push(success[i].gid);
-                    alert("groups " + i + " " + success[i].gid);
-                }
-            }
-        }, function (error) {
-            alert("in homes view model: " + error);
-        });
-=======
-        this.azureHelper = azureHelper;
-        this.groups = ko.observableArray([]);
-        for (var i = 0; i < azureHelper.azureClient.getTable("groupUsers").length; i++) {
-            this.groups.push(azureHelper.groupUsers[i]);
-            alert(this.groups[i]);
+        groupsTable.where({ uid: user }).read().then((success) => {
+        alert("in success: " + success);
+        if (success.length > 0) {
+        for (var i = 0; i < success.length; i++) {
+        this.groups.push(success[i].gid);
+        alert("groups " + i + " " + success[i].gid);
         }
->>>>>>> testiiiinnnng
+        }
+        }, (error) => {
+        alert("in homes view model: " + error);
+        });*/
     }
     HomeViewModel.prototype.OnShowAllGroups = function () {
         for (var group in this.groups) {
             console.log(group.id);
         }
-        document.getElementById("groupList").style.display = "inline";
+
+        //document.getElementById("groupList").style.display = "inline";
         alert("showing all groups");
     };
     HomeViewModel.prototype.OnShowGroupsByDate = function () {
@@ -57,25 +44,26 @@ var HomeViewModel = (function () {
     HomeViewModel.prototype.OnCreateGroup = function () {
         alert("creating group");
     };
-    HomeViewModel.prototype.OnChangeGroups = function () {
-        alert("changing group");
-        var select = document.getElementById("showGroups");
-        this.selection = select.options[select.selectedIndex].id;
-        switch (this.selection) {
-            case "allGroups":
-                this.OnShowAllGroups();
-                break;
-            case "byDate":
-                this.OnShowGroupsByDate();
-                break;
-            case "byCategory":
-                this.OnShowGroupsByCategory();
-                break;
-            case "favoriteGroups":
-                this.OnShowFavoriteGroups();
-                break;
-        }
-    };
+
+    //OnChangeGroups(): void {
+    //    alert("changing group");
+    //    var select = <HTMLSelectElement> document.getElementById("showGroups");
+    //    this.selection = select.options[select.selectedIndex].id;
+    //    switch (this.selection) {
+    //        case "allGroups":
+    //            this.OnShowAllGroups();
+    //            break;
+    //        case "byDate":
+    //            this.OnShowGroupsByDate();
+    //            break;
+    //        case "byCategory":
+    //            this.OnShowGroupsByCategory();
+    //            break;
+    //        case "favoriteGroups":
+    //            this.OnShowFavoriteGroups();
+    //            break;
+    //    }
+    //}
     HomeViewModel.prototype.OnPickGroup = function () {
         alert("picking group");
         document.getElementById("homeView").style.display = "none";

@@ -24,4 +24,4 @@ var GroupViewModel = (function () {
     };
     return GroupViewModel;
 })();
-//# sourceMappingURL=GroupViewModel.js.map
+//# sourceMappingURL=groupViewModel.js.map

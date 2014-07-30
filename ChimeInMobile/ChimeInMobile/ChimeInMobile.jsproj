@@ -115,7 +115,21 @@
     <Content Include="config.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="index.html" />
+    <Content Include="scripts\bootstrap.js" />
+    <Content Include="scripts\bootstrap.min.js" />
+    <Content Include="scripts\jquery-2.1.1.intellisense.js" />
+    <Content Include="scripts\jquery-2.1.1.js" />
+    <Content Include="scripts\jquery-2.1.1.min.js" />
+    <Content Include="scripts\jquery-2.1.1.min.map" />
     <Content Include="scripts\knockout-3.1.0.js" />
     <Content Include="services\mobile services\ChimeIn\service.js">
       <ConnectedServiceReference>ChimeIn</ConnectedServiceReference>
@@ -190,6 +204,7 @@
     <TypeScriptCompile Include="scripts\typings\cordova\plugins\Splashscreen.d.ts" />
     <TypeScriptCompile Include="scripts\typings\cordova\plugins\Vibration.d.ts" />
     <TypeScriptCompile Include="scripts\typings\cordova\plugins\WebSQL.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="scripts\typings\knockout\knockout.d.ts" />
   </ItemGroup>
   <PropertyGroup>

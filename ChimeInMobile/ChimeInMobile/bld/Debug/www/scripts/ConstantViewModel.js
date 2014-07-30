@@ -39,6 +39,25 @@
                 break;
         }
     };
+    ConstantViewModel.prototype.OnGoHome = function () {
+        this.previousPage.push(this.currentPage);
+        switch (this.currentPage) {
+            case 1 /* GROUPVIEWMODEL */:
+                document.getElementById("groupView").style.display = "none";
+                break;
+            case 0 /* HOMEVIEWMODEL */:
+                document.getElementById("homeView").style.display = "none";
+                break;
+            case 3 /* POLLBOARDVIEWMODEL */:
+                document.getElementById("pollView").style.display = "none";
+                break;
+            case 2 /* QUESTIONBOARDVIEWMODEL */:
+                document.getElementById("questionView").style.display = "none";
+                break;
+        }
+        this.currentPage = 0 /* HOMEVIEWMODEL */;
+        document.getElementById("homeView").style.display = "inline";
+    };
     return ConstantViewModel;
 })();
 var viewModel;

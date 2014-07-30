@@ -2,13 +2,14 @@
 class HomeViewModel {
     selection: string = "";
     constantViewModel: ConstantViewModel;
-<<<<<<< HEAD
+    azureHelper: AzureHelper;
     groups: KnockoutObservableArray<any>;
-    constructor(constantViewModel: ConstantViewModel, azureHelper: AzureHelper, user) {
+    constructor(constantViewModel: ConstantViewModel, azureHelper){//: AzureHelper, user) {
         alert("in constructor");
         this.constantViewModel = constantViewModel;
+        this.azureHelper = azureHelper;
         var groupsTable = azureHelper.azureClient.getTable("groupUsers");
-        alert("azure user: " + user);
+        /*alert("azure user: " + user);
         //alert("groups table: " + groupsTable);
         //alert(groupsTable.length);
         //for (var i = 0; i < groupsTable.length; i++) {
@@ -24,25 +25,13 @@ class HomeViewModel {
             }
         }, (error) => {
             alert("in homes view model: " + error);
-        });
-=======
-    azureHelper: AzureHelper;
-    groups: KnockoutObservableArray<any>;
-    constructor(constantViewModel: ConstantViewModel, azureHelper: AzureHelper) {
-        this.constantViewModel = constantViewModel;
-        this.azureHelper = azureHelper;
-        this.groups = ko.observableArray([]);
-        for (var i = 0; i < azureHelper.azureClient.getTable("groupUsers").length; i++) {
-            this.groups.push(azureHelper.groupUsers[i]);
-            alert(this.groups[i]);
-        }
->>>>>>> testiiiinnnng
+        });*/
     }
     OnShowAllGroups(): void {
         for (var group in this.groups) {
             console.log(group.id);
         }
-        document.getElementById("groupList").style.display = "inline";
+        //document.getElementById("groupList").style.display = "inline";
         alert("showing all groups");
     }
     OnShowGroupsByDate(): void {
@@ -57,25 +46,25 @@ class HomeViewModel {
     OnCreateGroup(): void {
         alert("creating group");
     }
-    OnChangeGroups(): void {
-        alert("changing group");
-        var select = <HTMLSelectElement> document.getElementById("showGroups");
-        this.selection = select.options[select.selectedIndex].id;
-        switch (this.selection) {
-            case "allGroups":
-                this.OnShowAllGroups();
-                break;
-            case "byDate":
-                this.OnShowGroupsByDate();
-                break;
-            case "byCategory":
-                this.OnShowGroupsByCategory();
-                break;
-            case "favoriteGroups":
-                this.OnShowFavoriteGroups();
-                break;
-        }
-    }
+    //OnChangeGroups(): void {
+    //    alert("changing group");
+    //    var select = <HTMLSelectElement> document.getElementById("showGroups");
+    //    this.selection = select.options[select.selectedIndex].id;
+    //    switch (this.selection) {
+    //        case "allGroups":
+    //            this.OnShowAllGroups();
+    //            break;
+    //        case "byDate":
+    //            this.OnShowGroupsByDate();
+    //            break;
+    //        case "byCategory":
+    //            this.OnShowGroupsByCategory();
+    //            break;
+    //        case "favoriteGroups":
+    //            this.OnShowFavoriteGroups();
+    //            break;
+    //    }
+    //}
     OnPickGroup(): void {
         alert("picking group");
         document.getElementById("homeView").style.display = "none";
