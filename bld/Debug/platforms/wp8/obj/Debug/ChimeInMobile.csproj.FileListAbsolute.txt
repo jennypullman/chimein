@@ -1,0 +1,14 @@
+C:\Users\t-lydiau\Source\Repos\chimein\ChimeInMobile\ChimeInMobile\bld\Debug\platforms\wp8\Bin\Debug\ApplicationIcon.png
+C:\Users\t-lydiau\Source\Repos\chimein\ChimeInMobile\ChimeInMobile\bld\Debug\platforms\wp8\Bin\Debug\Background.png
+C:\Users\t-lydiau\Source\Repos\chimein\ChimeInMobile\ChimeInMobile\bld\Debug\platforms\wp8\Bin\Debug\io.cordova.ChimeInMobile.dll
+C:\Users\t-lydiau\Source\Repos\chimein\ChimeInMobile\ChimeInMobile\bld\Debug\platforms\wp8\Bin\Debug\io.cordova.ChimeInMobile.pdb
+C:\Users\t-lydiau\Source\Repos\chimein\ChimeInMobile\ChimeInMobile\bld\Debug\platforms\wp8\Bin\Debug\AppManifest.xaml
+C:\Users\t-lydiau\Source\Repos\chimein\ChimeInMobile\ChimeInMobile\bld\Debug\platforms\wp8\Bin\Debug\Properties\WMAppManifest.xml
+C:\Users\t-lydiau\Source\Repos\chimein\ChimeInMobile\ChimeInMobile\bld\Debug\platforms\wp8\Bin\Debug\CordovaAppProj_Debug_AnyCPU.xap
+C:\Users\t-lydiau\Source\Repos\chimein\ChimeInMobile\ChimeInMobile\bld\Debug\platforms\wp8\obj\Debug\App.g.cs
+C:\Users\t-lydiau\Source\Repos\chimein\ChimeInMobile\ChimeInMobile\bld\Debug\platforms\wp8\obj\Debug\cordovalib\CordovaView.g.cs
+C:\Users\t-lydiau\Source\Repos\chimein\ChimeInMobile\ChimeInMobile\bld\Debug\platforms\wp8\obj\Debug\MainPage.g.cs
+C:\Users\t-lydiau\Source\Repos\chimein\ChimeInMobile\ChimeInMobile\bld\Debug\platforms\wp8\obj\Debug\io.cordova.ChimeInMobile.g.resources
+C:\Users\t-lydiau\Source\Repos\chimein\ChimeInMobile\ChimeInMobile\bld\Debug\platforms\wp8\obj\Debug\io.cordova.ChimeInMobile.dll
+C:\Users\t-lydiau\Source\Repos\chimein\ChimeInMobile\ChimeInMobile\bld\Debug\platforms\wp8\obj\Debug\io.cordova.ChimeInMobile.pdb
+C:\Users\t-lydiau\Source\Repos\chimein\ChimeInMobile\ChimeInMobile\bld\Debug\platforms\wp8\obj\Debug\XapCacheFile.xml
