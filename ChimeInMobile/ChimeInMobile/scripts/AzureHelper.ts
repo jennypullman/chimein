@@ -1,14 +1,13 @@
-﻿class AzureHelper {
+﻿
+class AzureHelper {
     azureClient: Microsoft.WindowsAzure.MobileServiceClient;
     groups: Microsoft.WindowsAzure.MobileServiceTable;
     users: Microsoft.WindowsAzure.MobileServiceTable;
     groupUsers: Microsoft.WindowsAzure.MobileServiceTable;
     user: string;
-    //loggedIn: boolean;
 
     constructor() {
     }
-
     getClient(callback: (client: Microsoft.WindowsAzure.MobileServiceClient) => void): void {
         //alert("in get client");
         if (this.azureClient) {
@@ -71,6 +70,7 @@
         this.azureClient.logout();
     }
 
+
     getUser(): string {
         return this.azureClient.currentUser.userId;
     }
@@ -90,4 +90,3 @@
         return this.groupUsers;
     }
 }
-

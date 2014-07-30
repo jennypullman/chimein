@@ -256,10 +256,10 @@
         <Content Include="www\scripts\ConstantViewModel.ts" />
     </ItemGroup>
     <ItemGroup>
-        <Content Include="www\scripts\GroupViewModel.js" />
+        <Content Include="www\scripts\groupViewModel.js" />
     </ItemGroup>
     <ItemGroup>
-        <Content Include="www\scripts\GroupViewModel.js.map" />
+        <Content Include="www\scripts\groupViewModel.js.map" />
     </ItemGroup>
     <ItemGroup>
         <Content Include="www\scripts\GroupViewModel.ts" />

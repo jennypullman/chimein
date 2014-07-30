@@ -2,40 +2,38 @@
 class HomeViewModel {
     selection: string = "";
     constantViewModel: ConstantViewModel;
+    azureHelper: AzureHelper;
     groups: KnockoutObservableArray<any>;
     constructor(constantViewModel: ConstantViewModel, azureHelper: AzureHelper) {
-        //alert("in constructor");
         this.constantViewModel = constantViewModel;
-        var groupsTable = azureHelper.azureClient.getTable("groupUsers");
-        groupsTable.where({ uid: azureHelper.user }).read().then((success) => {
-            //alert("in succes: " + success);
-            if (success.length > 0) {
-                for (var i = 0; i < success.length; i++) {
-                    this.groups.push(success[i]);
-                    //alert(success[i]);
-                }
-            }
-        }, (error) => {
-            //alert("in homes view model: " + error);
-        });
+        this.azureHelper = azureHelper;
+        this.groups = ko.observableArray([]);
+        for (var i = 0; i < azureHelper.azureClient.getTable("groupUsers").length; i++) {
+            this.groups.push(azureHelper.groupUsers[i]);
+            alert(this.groups[i]);
+        }
     }
     OnShowAllGroups(): void {
-        //alert("showing all groups");
+        for (var group in this.groups) {
+            console.log(group.id);
+        }
+        document.getElementById("groupList").style.display = "inline";
+        alert("showing all groups");
     }
     OnShowGroupsByDate(): void {
-        //alert("showing groups by date");
+        alert("showing groups by date");
     }
     OnShowGroupsByCategory(): void {
-        //alert("showing groups by category");
+        alert("showing groups by category");
     }
     OnShowFavoriteGroups(): void {
-        //alert("showing favorite groups");
+        alert("showing favorite groups");
     }
     OnCreateGroup(): void {
-        //alert("creating group");
+        alert("creating group");
     }
     OnChangeGroups(): void {
-        //alert("changing group");
+        alert("changing group");
         var select = <HTMLSelectElement> document.getElementById("showGroups");
         this.selection = select.options[select.selectedIndex].id;
         switch (this.selection) {
@@ -54,11 +52,14 @@ class HomeViewModel {
         }
     }
     OnPickGroup(): void {
-        //alert("picking group");
-        document.getElementById("homeView").style.visibility = "hidden";
+        alert("picking group");
+        document.getElementById("homeView").style.display = "none";
         this.constantViewModel.previousPage.push(viewModel.HOMEVIEWMODEL);
-        document.getElementById("groupView").style.visibility = "visible";
+        document.getElementById("groupView").style.display = "inline";
         this.constantViewModel.currentPage = viewModel.GROUPVIEWMODEL;
+    }
+    getGroups(): Microsoft.WindowsAzure.MobileServiceTable {
+        return this.azureHelper.groups;
     }
     Refresh(): void {
     }

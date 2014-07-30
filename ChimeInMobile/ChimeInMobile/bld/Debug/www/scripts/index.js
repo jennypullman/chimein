@@ -18,23 +18,25 @@ var ChimeInMobile;
             this.constantViewModel = new ConstantViewModel();
         };
 
-        Application.prototype.applyBindings = function (azureHelper) {
-            var groupViewModel = new GroupViewModel(this.constantViewModel);
-            var homeViewModel = new HomeViewModel(this.constantViewModel, azureHelper);
-            var questionBoardViewModel = new QuestionBoardViewModel(this.constantViewModel);
-            var pollBoardViewModel = new PollBoardViewModel(this.constantViewModel);
-            ko.applyBindings(groupViewModel, document.getElementById("groupViewHeader"));
-            ko.applyBindings(homeViewModel, document.getElementById("createGroup"));
-            ko.applyBindings(homeViewModel, document.getElementById("showGroups"));
-            ko.applyBindings(homeViewModel, document.getElementById("pickGroup"));
-            ko.applyBindings(groupViewModel, document.getElementById("questionBoard"));
-            ko.applyBindings(groupViewModel, document.getElementById("pollBoard"));
-            ko.applyBindings(this.constantViewModel, document.getElementById("backButton"));
-        };
-
+        /*
+        applyBindings(user: string, azureHelper: AzureHelper): void {
+        var groupViewModel = new GroupViewModel(this.constantViewModel, azureHelper);
+        var homeViewModel = new HomeViewModel(this.constantViewModel, azureHelper, user);
+        var questionBoardViewModel = new QuestionBoardViewModel(this.constantViewModel, azureHelper);
+        var pollBoardViewModel = new PollBoardViewModel(this.constantViewModel, azureHelper);
+        ko.applyBindings(groupViewModel, document.getElementById("groupViewHeader"));
+        ko.applyBindings(homeViewModel, document.getElementById("createGroup"));
+        ko.applyBindings(homeViewModel, document.getElementById("showGroups"));
+        ko.applyBindings(homeViewModel, document.getElementById("pickGroup"));
+        ko.applyBindings(groupViewModel, document.getElementById("questionBoard"));
+        ko.applyBindings(groupViewModel, document.getElementById("pollBoard"));
+        ko.applyBindings(this.constantViewModel, document.getElementById("backButton"));
+        ko.applyBindings(homeViewModel, document.getElementById("groupList"));
+        }*/
         Application.prototype.onDeviceReady = function () {
             var _this = this;
             // Handle the Cordova pause and resume events
+            alert("in device ready");
             document.addEventListener('pause', function () {
                 _this.onPause();
             }, false);
@@ -45,13 +47,33 @@ var ChimeInMobile;
             // TODO: Cordova has been loaded. Perform any initialization that requires Cordova here.
             var azureHelper = new AzureHelper();
             azureHelper.getClient(function (client) {
-                //alert("client worked");
-                azureHelper.login(function (user) {
-                    //alert("user worked");
-                    _this.applyBindings(azureHelper);
+                alert("client worked");
+                azureHelper.login(client, function (user) {
+                    alert("user worked");
+                    alert("call back user: " + user);
+                    //this.applyBindings(user, azureHelper);
                 });
             });
-            //alert("all logged in");
+
+            //FIX THIS: remove later
+            var groupViewModel = new GroupViewModel(this.constantViewModel, azureHelper);
+            var homeViewModel = new HomeViewModel(this.constantViewModel, azureHelper);
+            var questionBoardViewModel = new QuestionBoardViewModel(this.constantViewModel, azureHelper);
+            var pollBoardViewModel = new PollBoardViewModel(this.constantViewModel, azureHelper);
+            ko.applyBindings(groupViewModel, document.getElementById("groupViewHeader"));
+            ko.applyBindings(homeViewModel, document.getElementById("createGroup"));
+            ko.applyBindings(homeViewModel, document.getElementById("allGroups"));
+            ko.applyBindings(homeViewModel, document.getElementById("favoriteGroups"));
+            ko.applyBindings(homeViewModel, document.getElementById("byDate"));
+            ko.applyBindings(homeViewModel, document.getElementById("byCategory"));
+            ko.applyBindings(homeViewModel, document.getElementById("pickGroup"));
+            ko.applyBindings(groupViewModel, document.getElementById("questionBoard"));
+            ko.applyBindings(groupViewModel, document.getElementById("pollBoard"));
+            ko.applyBindings(this.constantViewModel, document.getElementById("backButton"));
+            ko.applyBindings(this.constantViewModel, document.getElementById("goHome"));
+
+            //ko.applyBindings(homeViewModel, document.getElementById("groupList"));
+            alert("all logged in");
         };
 
         Application.prototype.onPause = function () {

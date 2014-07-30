@@ -10,7 +10,7 @@
                     "/Deployment/App/Capabilities": [
                         {
                             "xml": "<Capability Name=\"ID_CAP_NETWORKING\" />",
-                            "count": 2
+                            "count": 1
                         },
                         {
                             "xml": "<Capability Name=\"ID_CAP_IDENTITY_DEVICE\" />",
@@ -37,15 +37,15 @@
     },
     "installed_plugins": {
         "com.msopentech.azure-mobile-services": {
-            "PACKAGE_NAME": "{B838B97B-EFB4-411B-8E47-CA647FC6878E}"
+            "PACKAGE_NAME": "{E3C3576E-8749-4C9E-B072-2E70DC19772B}"
         },
         "org.apache.cordova.device": {
-            "PACKAGE_NAME": "{B838B97B-EFB4-411B-8E47-CA647FC6878E}"
+            "PACKAGE_NAME": "{E3C3576E-8749-4C9E-B072-2E70DC19772B}"
         }
     },
     "dependent_plugins": {
         "org.apache.cordova.inappbrowser": {
-            "PACKAGE_NAME": "{B838B97B-EFB4-411B-8E47-CA647FC6878E}"
+            "PACKAGE_NAME": "{E3C3576E-8749-4C9E-B072-2E70DC19772B}"
         }
     }
 }

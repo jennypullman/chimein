@@ -1,45 +1,51 @@
 ﻿var AzureHelper = (function () {
     function AzureHelper() {
     }
-    AzureHelper.prototype.getClient = function (callback) {
-        if (this.azureClient) {
-            callback(this.azureClient);
-        } else {
-            this.azureClient = new WindowsAzure.MobileServiceClient("https://chimein.azure-mobile.net/", "JXYobPzySaNOpAAksQlMfAEUzGQcaB35");
-            callback(this.azureClient);
-        }
-    };
-
-    AzureHelper.prototype.login = function (callback) {
+    //getClient(): void {
+    //    this.azureClient = new WindowsAzure.MobileServiceClient(
+    //        "https://chimein.azure-mobile.net/",
+    //        "JXYobPzySaNOpAAksQlMfAEUzGQcaB35");
+    //}
+    AzureHelper.prototype.login = function () {
         var _this = this;
-        if (this.user) {
-            callback(this.user);
-        } else {
-            //alert("in login");
-            this.azureClient.login("facebook").then(function (results) {
-                //alert("in facebook");
-                _this.user = results.userId;
-                _this.getUsers();
-                _this.getGroupUsers();
-
-                _this.users.where({ uid: results.userId }).read().then(function (success) {
-                    if (success.length > 0) {
-                        console.log("User ID" + _this.user);
-                        console.log("in success");
-                        _this.user = success[0];
-                    } else {
-                        console.log("in else");
-                        _this.users.insert({ uid: results.userId }).done(function () {
-                            //alert("IT WORKED");
-                        });
-                    }
-                }, function (error) {
-                    console.log("In error");
-                });
+        this.azureClient = new WindowsAzure.MobileServiceClient("https://chimein.azure-mobile.net/", "JXYobPzySaNOpAAksQlMfAEUzGQcaB35");
+        this.azureClient.login("facebook").then(function (results) {
+            _this.user = results.userId;
+            _this.getUsers();
+            _this.getGroupUsers();
+            var uids = [];
+            alert("holy fuck were here");
+            for (var user in _this.azureClient.getTable('users')) {
+                alert(user);
+                if (user.uid == results.userId) {
+                    uids.push(user.uid);
+                    alert(user.uid);
+                }
+            }
+            _this.users.where({ uid: results.userId }).read().then(function (success) {
+                if (success.length > 0) {
+                    console.log("User ID" + _this.user);
+                    console.log("in success");
+                    _this.user = success[0];
+                } else {
+                    console.log("in else");
+                    _this.users.insert({ uid: results.userId }).done(function () {
+                        alert("IT WORKED");
+                    });
+                }
             }, function (error) {
+                console.log("In error");
             });
-            callback(this.user);
-        }
+
+            _this.groupUsers.where({ uid: results.userId }).read().then(function (success) {
+                // success code here
+            }, function (error) {
+                console.log(error);
+            });
+        }, function (error) {
+            alert(error);
+        });
+        alert(this.groupUsers);
     };
 
     AzureHelper.prototype.logout = function () {
@@ -62,6 +68,7 @@
 
     AzureHelper.prototype.getGroupUsers = function () {
         this.groupUsers = this.groupUsers || this.azureClient.getTable('groupUsers');
+        alert(this.groupUsers);
         return this.groupUsers;
     };
     return AzureHelper;

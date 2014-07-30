@@ -1,7 +1,8 @@
 ﻿///<reference path='../scripts/ConstantViewModel.ts' />
 var QuestionBoardViewModel = (function () {
-    function QuestionBoardViewModel(constantViewModel) {
+    function QuestionBoardViewModel(constantViewModel, azureHelper) {
         this.constantViewModel = constantViewModel;
+        this.azureHelper = azureHelper;
     }
     return QuestionBoardViewModel;
 })();

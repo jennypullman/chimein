@@ -8,16 +8,17 @@ module ChimeInMobile {
     export var application;
     class Application {
         constantViewModel: ConstantViewModel;
+        azureHelper: AzureHelper;
         initialize(): void {
             document.addEventListener('deviceready', () => { this.onDeviceReady(); }, false);
             this.constantViewModel = new ConstantViewModel();
         }
 
         applyBindings(user: string, azureHelper: AzureHelper): void {
-           var groupViewModel = new GroupViewModel(this.constantViewModel);
+            var groupViewModel = new GroupViewModel(this.constantViewModel, azureHelper);
             var homeViewModel = new HomeViewModel(this.constantViewModel, azureHelper, user);
-            var questionBoardViewModel = new QuestionBoardViewModel(this.constantViewModel);
-            var pollBoardViewModel = new PollBoardViewModel(this.constantViewModel);
+            var questionBoardViewModel = new QuestionBoardViewModel(this.constantViewModel, azureHelper);
+            var pollBoardViewModel = new PollBoardViewModel(this.constantViewModel, azureHelper);
             ko.applyBindings(groupViewModel, document.getElementById("groupViewHeader"));
             ko.applyBindings(homeViewModel, document.getElementById("homeView"));
             //ko.applyBindings({ groups: [{ gid: "GROUP NAME" }] });

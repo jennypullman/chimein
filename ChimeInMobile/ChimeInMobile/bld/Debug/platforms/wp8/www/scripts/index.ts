@@ -8,16 +8,33 @@ module ChimeInMobile {
     export var application;
     class Application {
         constantViewModel: ConstantViewModel;
+        azureHelper: AzureHelper;
         initialize(): void {
             document.addEventListener('deviceready', () => { this.onDeviceReady(); }, false);
             this.constantViewModel = new ConstantViewModel();
         }
 
-        applyBindings(azureHelper: AzureHelper): void {
-            var groupViewModel = new GroupViewModel(this.constantViewModel);
-            var homeViewModel = new HomeViewModel(this.constantViewModel, azureHelper);
-            var questionBoardViewModel = new QuestionBoardViewModel(this.constantViewModel);
-            var pollBoardViewModel = new PollBoardViewModel(this.constantViewModel);
+        //onLogin(azureClient: Microsoft.WindowsAzure.MobileServiceClient): void {
+        //    this.azureHelper.login(azureClient).then {
+
+                
+        //    });
+        //}
+
+        onDeviceReady(): void {
+            // Handle the Cordova pause and resume events
+            document.addEventListener('pause', () => { this.onPause(); }, false);
+            document.addEventListener('resume', () => { this.onResume(); }, false);
+            alert("in device ready");
+            // TODO: Cordova has been loaded. Perform any initialization that requires Cordova here.
+            this.azureHelper = new AzureHelper();
+            //this.azureHelper.getClient();
+            this.azureHelper.login();
+            //azureHelper.getGroups();
+            var groupViewModel = new GroupViewModel(this.constantViewModel, this.azureHelper);
+            var homeViewModel = new HomeViewModel(this.constantViewModel, this.azureHelper);
+            var questionBoardViewModel = new QuestionBoardViewModel(this.constantViewModel, this.azureHelper);
+            var pollBoardViewModel = new PollBoardViewModel(this.constantViewModel, this.azureHelper);
             ko.applyBindings(groupViewModel, document.getElementById("groupViewHeader"));
             ko.applyBindings(homeViewModel, document.getElementById("createGroup"));
             ko.applyBindings(homeViewModel, document.getElementById("showGroups"));
@@ -25,24 +42,7 @@ module ChimeInMobile {
             ko.applyBindings(groupViewModel, document.getElementById("questionBoard"));
             ko.applyBindings(groupViewModel, document.getElementById("pollBoard"));
             ko.applyBindings(this.constantViewModel, document.getElementById("backButton"));
-        }
-
-        onDeviceReady(): void {
-            // Handle the Cordova pause and resume events
-            document.addEventListener('pause', () => { this.onPause(); }, false);
-            document.addEventListener('resume', () => { this.onResume(); }, false);
-
-            // TODO: Cordova has been loaded. Perform any initialization that requires Cordova here.
-            var azureHelper = new AzureHelper();
-            azureHelper.getClient((client) => {
-                //alert("client worked");
-                azureHelper.login((user) => {
-                    //alert("user worked");
-                    this.applyBindings(azureHelper);
-                });
-            });
-            
-            //alert("all logged in");
+            ko.applyBindings(homeViewModel, document.getElementById("groupList"));
         }
 
         onPause(): void {
