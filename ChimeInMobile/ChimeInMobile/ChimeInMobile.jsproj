@@ -116,6 +116,10 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="index.html" />
+    <Content Include="scripts\jquery-2.1.1.intellisense.js" />
+    <Content Include="scripts\jquery-2.1.1.js" />
+    <Content Include="scripts\jquery-2.1.1.min.js" />
+    <Content Include="scripts\jquery-2.1.1.min.map" />
     <Content Include="scripts\knockout-3.1.0.js" />
     <Content Include="services\mobile services\ChimeIn\service.js">
       <ConnectedServiceReference>ChimeIn</ConnectedServiceReference>
@@ -128,7 +132,9 @@
     <TypeScriptCompile Include="scripts\GroupViewModel.ts" />
     <TypeScriptCompile Include="scripts\index.ts" />
     <Content Include="css\index.css" />
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="res\cert\android\ant.properties" />
     <Content Include="res\icons\android\icon-36-ldpi.png" />
     <Content Include="res\icons\android\icon-48-mdpi.png" />
@@ -190,6 +196,7 @@
     <TypeScriptCompile Include="scripts\typings\cordova\plugins\Splashscreen.d.ts" />
     <TypeScriptCompile Include="scripts\typings\cordova\plugins\Vibration.d.ts" />
     <TypeScriptCompile Include="scripts\typings\cordova\plugins\WebSQL.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="scripts\typings\knockout\knockout.d.ts" />
   </ItemGroup>
   <PropertyGroup>

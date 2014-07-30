@@ -14,17 +14,23 @@ module ChimeInMobile {
         }
 
         applyBindings(user: string, azureHelper: AzureHelper): void {
-            var groupViewModel = new GroupViewModel(this.constantViewModel);
+           var groupViewModel = new GroupViewModel(this.constantViewModel);
             var homeViewModel = new HomeViewModel(this.constantViewModel, azureHelper, user);
             var questionBoardViewModel = new QuestionBoardViewModel(this.constantViewModel);
             var pollBoardViewModel = new PollBoardViewModel(this.constantViewModel);
             ko.applyBindings(groupViewModel, document.getElementById("groupViewHeader"));
-            ko.applyBindings(homeViewModel, document.getElementById("createGroup"));
-            ko.applyBindings(homeViewModel, document.getElementById("showGroups"));
-            ko.applyBindings(homeViewModel, document.getElementById("pickGroup"));
+            ko.applyBindings(homeViewModel, document.getElementById("homeView"));
+            //ko.applyBindings({ groups: [{ gid: "GROUP NAME" }] });
+            //ko.applyBindings(homeViewModel, document.getElementById("showGroups"));
+            //ko.applyBindings(homeViewModel, document.getElementById("pickGroup"));
             ko.applyBindings(groupViewModel, document.getElementById("questionBoard"));
             ko.applyBindings(groupViewModel, document.getElementById("pollBoard"));
             ko.applyBindings(this.constantViewModel, document.getElementById("backButton"));
+            alert("bindings worked");
+            //var viewModel = {
+            //    sample: ko.observable() // Initially blank
+            //};
+            //viewModel.sample("Hello, world!"); // Text appears
         }
 
         onDeviceReady(): void {
@@ -36,15 +42,15 @@ module ChimeInMobile {
             // TODO: Cordova has been loaded. Perform any initialization that requires Cordova here.
             var azureHelper = new AzureHelper();
             azureHelper.getClient((client) => {
-                alert("client worked");
+                //alert("client worked");
                 azureHelper.login(client, (user) => {
-                    alert("user worked");
-                    alert("call back user: " + user);
+                    //alert("user worked");
+                    //alert("call back user: " + user);
                     this.applyBindings(user, azureHelper);
                 });
             });
             
-            alert("all logged in");
+            //alert("all logged in");
         }
 
         onPause(): void {

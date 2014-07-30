@@ -3,27 +3,38 @@ class HomeViewModel {
     selection: string = "";
     constantViewModel: ConstantViewModel;
     groups: KnockoutObservableArray<any>;
+    someGroups: Array<any>;
     constructor(constantViewModel: ConstantViewModel, azureHelper: AzureHelper, user) {
-        alert("in constructor");
-        this.constantViewModel = constantViewModel;
+        var self = this;
+        //alert("in constructor");
+        self.constantViewModel = constantViewModel;
         var groupsTable = azureHelper.azureClient.getTable("groupUsers");
-        alert("azure user: " + user);
+        //alert("azure user: " + user);
         //alert("groups table: " + groupsTable);
         //alert(groupsTable.length);
         //for (var i = 0; i < groupsTable.length; i++) {
         //    alert(groupsTable[i]);
         //}
+        self.groups = ko.observableArray([]);
+        self.groups.subscribe(function (newValue) {
+            alert("The person's new name is " + newValue);
+        });
+        //this.someGroups = [];
+        //this.groups.push("foo");
+        //alert(this.groups.peek());
         groupsTable.where({ uid: user }).read().then((success) => {
-            alert("in success: " + success);
+            //alert("in success: " + success);
             if (success.length > 0) {
+                alert("success length: " + success.length);
                 for (var i = 0; i < success.length; i++) {
-                    this.groups.push(success[i].gid);
-                    alert("groups " + i + " " + success[i].gid);
+                    $("#groupList").append("<tr><td>" + success[i].gid + "</td></tr>");
                 }
+                //this.groups(this.someGroups);
+                alert(self.groups().length);
             }
         }, (error) => {
-            alert("in homes view model: " + error);
-        });
+                alert("in homes view model: " + error);
+            });
     }
     OnShowAllGroups(): void {
         alert("showing all groups");
