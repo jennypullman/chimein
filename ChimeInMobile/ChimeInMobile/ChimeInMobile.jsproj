@@ -116,11 +116,11 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="index.html" />
+    <Content Include="scripts\knockout-3.1.0.js" />
     <Content Include="services\mobile services\ChimeIn\service.js">
       <ConnectedServiceReference>ChimeIn</ConnectedServiceReference>
     </Content>
     <TypeScriptCompile Include="scripts\AzureHelper.ts" />
-    <Content Include="scripts\knockout-3.1.0.js" />
     <TypeScriptCompile Include="scripts\ConstantViewModel.ts" />
     <TypeScriptCompile Include="scripts\HomeViewModel.ts" />
     <TypeScriptCompile Include="scripts\QuestionBoardViewModel.ts" />
@@ -190,6 +190,7 @@
     <TypeScriptCompile Include="scripts\typings\cordova\plugins\Splashscreen.d.ts" />
     <TypeScriptCompile Include="scripts\typings\cordova\plugins\Vibration.d.ts" />
     <TypeScriptCompile Include="scripts\typings\cordova\plugins\WebSQL.d.ts" />
+    <TypeScriptCompile Include="scripts\typings\knockout\knockout.d.ts" />
   </ItemGroup>
   <PropertyGroup>
     <TypeScriptToolsVersion>1.0</TypeScriptToolsVersion>

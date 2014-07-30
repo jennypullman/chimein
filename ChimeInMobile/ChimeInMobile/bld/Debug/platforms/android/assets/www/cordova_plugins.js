@@ -11,6 +11,13 @@ module.exports = [
         "runs": true
     },
     {
+        "file": "plugins/org.apache.cordova.device/www/device.js",
+        "id": "org.apache.cordova.device.device",
+        "clobbers": [
+            "device"
+        ]
+    },
+    {
         "file": "plugins/org.apache.cordova.inappbrowser/www/inappbrowser.js",
         "id": "org.apache.cordova.inappbrowser.inappbrowser",
         "clobbers": [
@@ -22,6 +29,7 @@ module.exports.metadata =
 // TOP OF METADATA
 {
     "com.msopentech.azure-mobile-services": "0.1.2",
+    "org.apache.cordova.device": "0.2.9",
     "org.apache.cordova.inappbrowser": "0.4.0"
 }
 // BOTTOM OF METADATA

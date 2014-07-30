@@ -33,6 +33,9 @@ module ChimeInMobile {
             ko.applyBindings(groupViewModel, document.getElementById("questionBoard"));
             ko.applyBindings(groupViewModel, document.getElementById("pollBoard"));
             ko.applyBindings(this.constantViewModel, document.getElementById("backButton"));
+            azureHelper.getClient();
+            //azureHelper.getGroups();
+            azureHelper.login();
         }
 
         onPause(): void {
