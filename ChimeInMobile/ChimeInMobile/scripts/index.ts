@@ -18,7 +18,9 @@ module ChimeInMobile {
 
             // TODO: Cordova has been loaded. Perform any initialization that requires Cordova here.
             var azureHelper = new AzureHelper();
-            azureHelper.login(azureHelper.getGroups);
+            azureHelper.getClient();
+            //azureHelper.getGroups();
+            azureHelper.login();
         }
 
         onPause(): void {

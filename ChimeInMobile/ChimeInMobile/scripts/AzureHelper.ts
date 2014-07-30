@@ -5,19 +5,17 @@
     constructor() {
     }
 
-    login(callback: (client: Microsoft.WindowsAzure.MobileServiceClient) => void) {
-        if (this.azureClient) {
-            callback(this.azureClient);
-        }
-        else {
-            this.azureClient = new WindowsAzure.MobileServiceClient(
-                "https://chimein.azure-mobile.net/",
-                "SmtMiptFTkxedMRKLwXOKitBIQxUlW95");
-            callback(this.azureClient);
-        }
+    getClient(): void {
+        this.azureClient = new WindowsAzure.MobileServiceClient(
+            "https://chimein.azure-mobile.net/",
+            "SmtMiptFTkxedMRKLwXOKitBIQxUlW95");
     }
 
-    logout() {
+    login() {
+        this.azureClient.login("facebook").then((results) => { }, (error) => { });
+    }
+
+    logout(): void {
         this.azureClient.logout();
     }
 
