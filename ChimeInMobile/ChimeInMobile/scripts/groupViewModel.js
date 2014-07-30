@@ -7,15 +7,15 @@ var GroupViewModel = (function () {
     GroupViewModel.prototype.getGroup = function () {
     };
     GroupViewModel.prototype.OnShowGroup = function () {
-        alert("yay");
+        //alert("yay");
     };
     GroupViewModel.prototype.OnClickQuestionBoard = function () {
-        alert("Opening question board.");
+        //alert("Opening question board.");
         document.getElementById("groupView").style.visibility = "hidden";
         document.getElementById("questionView").style.visibility = "visible";
     };
     GroupViewModel.prototype.OnClickPollBoard = function () {
-        alert("Opening poll board.");
+        //alert("Opening poll board.");
         document.getElementById("groupView").style.visibility = "hidden";
         this.constantViewModel.previousPage.push(1 /* GROUPVIEWMODEL */);
         document.getElementById("pollView").style.visibility = "visible";

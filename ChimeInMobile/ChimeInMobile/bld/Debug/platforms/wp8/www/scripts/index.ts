@@ -7,29 +7,15 @@ module ChimeInMobile {
 
     export var application;
     class Application {
-<<<<<<< HEAD:ChimeInMobile/ChimeInMobile/bld/Ripple/Android/Debug/scripts/index.ts
         constantViewModel: ConstantViewModel;
         initialize(): void {
             document.addEventListener('deviceready', () => { this.onDeviceReady(); }, false);
             this.constantViewModel = new ConstantViewModel();
-=======
-        initialize(): void {
-            document.addEventListener('deviceready', () => { this.onDeviceReady(); }, false);
->>>>>>> 7f2f88842e97cb7847e685c2f1700bce7d10bf84:ChimeInMobile/ChimeInMobile/bld/Debug/platforms/wp8/www/scripts/index.ts
         }
 
-        onDeviceReady(): void {
-            // Handle the Cordova pause and resume events
-            document.addEventListener('pause', () => { this.onPause(); }, false);
-            document.addEventListener('resume', () => { this.onResume(); }, false);
-
-            // TODO: Cordova has been loaded. Perform any initialization that requires Cordova here.
-            var azureHelper = new AzureHelper();
-<<<<<<< HEAD:ChimeInMobile/ChimeInMobile/bld/Ripple/Android/Debug/scripts/index.ts
-            azureHelper.login();
-
+        applyBindings(azureHelper: AzureHelper): void {
             var groupViewModel = new GroupViewModel(this.constantViewModel);
-            var homeViewModel = new HomeViewModel(this.constantViewModel);
+            var homeViewModel = new HomeViewModel(this.constantViewModel, azureHelper);
             var questionBoardViewModel = new QuestionBoardViewModel(this.constantViewModel);
             var pollBoardViewModel = new PollBoardViewModel(this.constantViewModel);
             ko.applyBindings(groupViewModel, document.getElementById("groupViewHeader"));
@@ -39,11 +25,24 @@ module ChimeInMobile {
             ko.applyBindings(groupViewModel, document.getElementById("questionBoard"));
             ko.applyBindings(groupViewModel, document.getElementById("pollBoard"));
             ko.applyBindings(this.constantViewModel, document.getElementById("backButton"));
-=======
-            azureHelper.getClient();
-            //azureHelper.getGroups();
-            azureHelper.login();
->>>>>>> 7f2f88842e97cb7847e685c2f1700bce7d10bf84:ChimeInMobile/ChimeInMobile/bld/Debug/platforms/wp8/www/scripts/index.ts
+        }
+
+        onDeviceReady(): void {
+            // Handle the Cordova pause and resume events
+            document.addEventListener('pause', () => { this.onPause(); }, false);
+            document.addEventListener('resume', () => { this.onResume(); }, false);
+
+            // TODO: Cordova has been loaded. Perform any initialization that requires Cordova here.
+            var azureHelper = new AzureHelper();
+            azureHelper.getClient((client) => {
+                //alert("client worked");
+                azureHelper.login((user) => {
+                    //alert("user worked");
+                    this.applyBindings(azureHelper);
+                });
+            });
+            
+            //alert("all logged in");
         }
 
         onPause(): void {

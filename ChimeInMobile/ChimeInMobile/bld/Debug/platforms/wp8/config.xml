@@ -3,8 +3,8 @@
     <feature name="InAppBrowser">
         <param name="wp-package" value="InAppBrowser" />
     </feature>
-    <feature name="InAppBrowser">
-        <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
+    <feature name="Device">
+        <param name="wp-package" value="Device" />
     </feature>
     <name>ChimeInMobile</name>
     <description>
@@ -19,6 +19,7 @@
     <vs:features>
         <vs:feature>com.msopentech.azure-mobile-services@0.1.2</vs:feature>
         <vs:feature>org.apache.cordova.inappbrowser@0.4.0</vs:feature>
+        <vs:feature>org.apache.cordova.device@0.2.9</vs:feature>
     </vs:features>
     <vs:platformSpecificValues>
         <vs:platformSpecificWidget platformName="windows8" />

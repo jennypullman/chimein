@@ -4,11 +4,12 @@
   <Languages xmlns="">
     <Language code="en-US" />
   </Languages>
-  <App Author="ChimeInMobile author" BitsPerPixel="32" Description="Apache Cordova for Windows Phone" Genre="apps.normal" ProductID="{32B6C8F7-51FD-43F6-BB30-42D6ABFB3D57}" Publisher="ChimeInMobile" PublisherID="{db093ed5-53b1-45f7-af72-751e8f36ab80}" RuntimeType="Silverlight" Title="ChimeInMobile" Version="1.0.0.0" xmlns="">
+  <App Author="ChimeInMobile author" BitsPerPixel="32" Description="Apache Cordova for Windows Phone" Genre="apps.normal" ProductID="{B838B97B-EFB4-411B-8E47-CA647FC6878E}" Publisher="ChimeInMobile" PublisherID="{db093ed5-53b1-45f7-af72-751e8f36ab80}" RuntimeType="Silverlight" Title="ChimeInMobile" Version="1.0.0.0" xmlns="">
     <IconPath IsRelative="true" IsResource="false">ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_WEBBROWSERCOMPONENT" />
       <Capability Name="ID_CAP_NETWORKING" />
+      <Capability Name="ID_CAP_IDENTITY_DEVICE" />
     </Capabilities>
     <Tasks>
       <DefaultTask Name="_default" NavigationPage="MainPage.xaml" />

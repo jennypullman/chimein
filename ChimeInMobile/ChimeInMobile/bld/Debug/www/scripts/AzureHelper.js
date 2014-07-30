@@ -1,39 +1,45 @@
 ﻿var AzureHelper = (function () {
     function AzureHelper() {
     }
-    AzureHelper.prototype.getClient = function () {
-        this.azureClient = new WindowsAzure.MobileServiceClient("https://chimein.azure-mobile.net/", "JXYobPzySaNOpAAksQlMfAEUzGQcaB35");
+    AzureHelper.prototype.getClient = function (callback) {
+        if (this.azureClient) {
+            callback(this.azureClient);
+        } else {
+            this.azureClient = new WindowsAzure.MobileServiceClient("https://chimein.azure-mobile.net/", "JXYobPzySaNOpAAksQlMfAEUzGQcaB35");
+            callback(this.azureClient);
+        }
     };
 
-    AzureHelper.prototype.login = function () {
+    AzureHelper.prototype.login = function (callback) {
         var _this = this;
-        this.azureClient.login("facebook").then(function (results) {
-            _this.user = results.userId;
-            _this.getUsers();
-            _this.getGroupUsers();
+        if (this.user) {
+            callback(this.user);
+        } else {
+            //alert("in login");
+            this.azureClient.login("facebook").then(function (results) {
+                //alert("in facebook");
+                _this.user = results.userId;
+                _this.getUsers();
+                _this.getGroupUsers();
 
-            _this.users.where({ uid: results.userId }).read().then(function (success) {
-                if (success.length > 0) {
-                    console.log("User ID" + _this.user);
-                    console.log("in success");
-                    _this.user = success[0];
-                } else {
-                    console.log("in else");
-                    _this.users.insert({ uid: results.userId }).done(function () {
-                        alert("IT WORKED");
-                    });
-                }
+                _this.users.where({ uid: results.userId }).read().then(function (success) {
+                    if (success.length > 0) {
+                        console.log("User ID" + _this.user);
+                        console.log("in success");
+                        _this.user = success[0];
+                    } else {
+                        console.log("in else");
+                        _this.users.insert({ uid: results.userId }).done(function () {
+                            //alert("IT WORKED");
+                        });
+                    }
+                }, function (error) {
+                    console.log("In error");
+                });
             }, function (error) {
-                console.log("In error");
             });
-
-            _this.groupUsers.where({ uid: results.userId }).read().then(function (success) {
-                // success code here
-            }, function (error) {
-                console.log(error);
-            });
-        }, function (error) {
-        });
+            callback(this.user);
+        }
     };
 
     AzureHelper.prototype.logout = function () {

@@ -63,6 +63,6 @@ interface RegistrationOptions {
     ecb?: string;
     badge?: boolean;
     sound?: boolean;
-    alert?: boolean
+    //alert?: boolean
 }
 

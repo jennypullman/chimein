@@ -22,7 +22,6 @@
     <script src="scripts/PollBoardViewModel.js"></script>
     <script src="scripts/ConstantViewModel.js"></script>
     <script src="scripts/index.js"></script>
-<<<<<<< HEAD
     <button id="backButton" data-bind="event:{click:OnBack}">Back</button>
     <form id="searchBar">
     Search: <input type="text" />
@@ -36,6 +35,13 @@
         </select>
         <button id="createGroup" data-bind="event:{click:OnCreateGroup}">Create Group</button>
         <button id="pickGroup" data-bind="event:{click:OnPickGroup}">Pick Group</button>
+        <table>
+            <tbody id="groupList" data-bind="foreach: groups" style="display:none">
+                <tr>
+                    <td data-bind="text: id"></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
     <div id="groupView" style="visibility:hidden">
         <div id="groupViewHeader" data-bind="text: groupName"></div>
@@ -46,16 +52,5 @@
     </div>
     <div id="questionView" style="visibility:hidden"></div>
     <div id="pollView" style="visibility:hidden"></div>
-    <script type="text/javascript">
-        //ko.applyBindings({
-        //    onShowGroupPage: function () { alert("yay") },
-        //    groupName: "groupName"
-        //})
-    </script>
-=======
-    <div style="visibility:visible">
-        app is working
-    </div>
->>>>>>> 7f2f88842e97cb7847e685c2f1700bce7d10bf84
 </body>
 </html>

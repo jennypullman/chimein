@@ -14,12 +14,8 @@
 
     <!-- ChimeIn references -->
     <script src="./services/mobile services/ChimeIn/service.js"></script>
-
-    <!-- ChimeIn references -->
-    <!--<script src="./services/mobile services/ChimeIn/service.js"></script>-->
     <script type='text/javascript' src='scripts/knockout-3.1.0.js'></script>
     <script src="scripts/AzureHelper.js"></script>
-<<<<<<< HEAD:ChimeInMobile/ChimeInMobile/bld/Debug/platforms/android/assets/www/index.html
     <script src="scripts/groupViewModel.js"></script>
     <script src="scripts/HomeViewModel.js"></script>
     <script src="scripts/QuestionBoardViewModel.js"></script>
@@ -39,6 +35,13 @@
         </select>
         <button id="createGroup" data-bind="event:{click:OnCreateGroup}">Create Group</button>
         <button id="pickGroup" data-bind="event:{click:OnPickGroup}">Pick Group</button>
+        <table>
+            <tbody id="groupList" data-bind="foreach: groups" style="display:none">
+                <tr>
+                    <td data-bind="text: id"></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
     <div id="groupView" style="visibility:hidden">
         <div id="groupViewHeader" data-bind="text: groupName"></div>
@@ -49,17 +52,5 @@
     </div>
     <div id="questionView" style="visibility:hidden"></div>
     <div id="pollView" style="visibility:hidden"></div>
-    <script type="text/javascript">
-        //ko.applyBindings({
-        //    onShowGroupPage: function () { alert("yay") },
-        //    groupName: "groupName"
-        //})
-    </script>
-=======
-    <script src="scripts/index.js"></script>
-    <div style="visibility:visible">
-        app is working
-    </div>
->>>>>>> 7f2f88842e97cb7847e685c2f1700bce7d10bf84:ChimeInMobile/ChimeInMobile/bld/Debug/platforms/wp8/www/index.html
 </body>
 </html>

@@ -11,6 +11,10 @@
                         {
                             "xml": "<Capability Name=\"ID_CAP_NETWORKING\" />",
                             "count": 2
+                        },
+                        {
+                            "xml": "<Capability Name=\"ID_CAP_IDENTITY_DEVICE\" />",
+                            "count": 1
                         }
                     ]
                 }
@@ -21,6 +25,10 @@
                         {
                             "xml": "<feature name=\"InAppBrowser\"><param name=\"wp-package\" value=\"InAppBrowser\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Device\"><param name=\"wp-package\" value=\"Device\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -29,12 +37,15 @@
     },
     "installed_plugins": {
         "com.msopentech.azure-mobile-services": {
-            "PACKAGE_NAME": "{32B6C8F7-51FD-43F6-BB30-42D6ABFB3D57}"
+            "PACKAGE_NAME": "{B838B97B-EFB4-411B-8E47-CA647FC6878E}"
+        },
+        "org.apache.cordova.device": {
+            "PACKAGE_NAME": "{B838B97B-EFB4-411B-8E47-CA647FC6878E}"
         }
     },
     "dependent_plugins": {
         "org.apache.cordova.inappbrowser": {
-            "PACKAGE_NAME": "{32B6C8F7-51FD-43F6-BB30-42D6ABFB3D57}"
+            "PACKAGE_NAME": "{B838B97B-EFB4-411B-8E47-CA647FC6878E}"
         }
     }
 }

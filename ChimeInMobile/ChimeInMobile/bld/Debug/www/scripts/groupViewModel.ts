@@ -11,15 +11,15 @@ class GroupViewModel {
         
     }
     OnShowGroup(): void {
-        alert("yay");
+        //alert("yay");
     }
     OnClickQuestionBoard(): void {
-        alert("Opening question board.");
+        //alert("Opening question board.");
         document.getElementById("groupView").style.visibility = "hidden";
         document.getElementById("questionView").style.visibility = "visible";
     }
     OnClickPollBoard(): void {
-        alert("Opening poll board.");
+        //alert("Opening poll board.");
         document.getElementById("groupView").style.visibility = "hidden";
         this.constantViewModel.previousPage.push(viewModel.GROUPVIEWMODEL);
         document.getElementById("pollView").style.visibility = "visible";

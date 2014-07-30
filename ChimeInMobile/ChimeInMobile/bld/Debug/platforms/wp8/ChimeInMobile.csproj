@@ -202,6 +202,9 @@
         <Compile Include="Plugins\org.apache.cordova.inappbrowser\InAppBrowser.cs" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Plugins\org.apache.cordova.device\Device.cs" />
+    </ItemGroup>
+    <ItemGroup>
         <Content Include="www\cordova.js" />
     </ItemGroup>
     <ItemGroup>
@@ -226,6 +229,9 @@
         <Content Include="www\plugins\com.msopentech.azure-mobile-services\www\MobileServices.Web.Ext.js" />
     </ItemGroup>
     <ItemGroup>
+        <Content Include="www\plugins\org.apache.cordova.device\www\device.js" />
+    </ItemGroup>
+    <ItemGroup>
         <Content Include="www\plugins\org.apache.cordova.inappbrowser\www\inappbrowser.js" />
     </ItemGroup>
     <ItemGroup>
@@ -241,6 +247,33 @@
         <Content Include="www\scripts\AzureHelper.ts" />
     </ItemGroup>
     <ItemGroup>
+        <Content Include="www\scripts\ConstantViewModel.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\scripts\ConstantViewModel.js.map" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\scripts\ConstantViewModel.ts" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\scripts\GroupViewModel.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\scripts\GroupViewModel.js.map" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\scripts\GroupViewModel.ts" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\scripts\HomeViewModel.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\scripts\HomeViewModel.js.map" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\scripts\HomeViewModel.ts" />
+    </ItemGroup>
+    <ItemGroup>
         <Content Include="www\scripts\index.js" />
     </ItemGroup>
     <ItemGroup>
@@ -248,6 +281,27 @@
     </ItemGroup>
     <ItemGroup>
         <Content Include="www\scripts\index.ts" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\scripts\knockout-3.1.0.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\scripts\PollBoardViewModel.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\scripts\PollBoardViewModel.js.map" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\scripts\PollBoardViewModel.ts" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\scripts\QuestionBoardViewModel.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\scripts\QuestionBoardViewModel.js.map" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\scripts\QuestionBoardViewModel.ts" />
     </ItemGroup>
     <ItemGroup>
         <Content Include="www\scripts\typings\AzureMobileServicesClient\AzureMobileServicesClient.d.ts" />
@@ -308,6 +362,9 @@
     </ItemGroup>
     <ItemGroup>
         <Content Include="www\scripts\typings\cordova\plugins\WebSQL.d.ts" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="www\scripts\typings\knockout\knockout.d.ts" />
     </ItemGroup>
     <ItemGroup>
         <Content Include="www\services\mobile services\ChimeIn\service.js" />

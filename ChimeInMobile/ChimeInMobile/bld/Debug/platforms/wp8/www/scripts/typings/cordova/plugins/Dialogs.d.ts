@@ -14,11 +14,11 @@ interface Navigator {
 /** This plugin provides access to some native dialog UI elements. */
 interface Notification {
     /**
-     * Shows a custom alert or dialog box. Most Cordova implementations use a native dialog box for this feature,
-     * but some platforms use the browser's alert function, which is typically less customizable.
+     * Shows a custom //alert or dialog box. Most Cordova implementations use a native dialog box for this feature,
+     * but some platforms use the browser's //alert function, which is typically less customizable.
      * @param message       Dialog message.
-     * @param alertCallback Callback to invoke when alert dialog is dismissed.
-     * @param title         Dialog title, defaults to 'Alert'.
+     * @param //alertCallback Callback to invoke when //alert dialog is dismissed.
+     * @param title         Dialog title, defaults to '//alert'.
      * @param buttonName    Button name, defaults to OK.
      */
     alert(message: string,
