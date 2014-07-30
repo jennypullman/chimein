@@ -1,6 +1,8 @@
-﻿var HomeViewModel = (function () {
-    function HomeViewModel() {
+﻿///<reference path='../scripts/ConstantViewModel.ts' />
+var HomeViewModel = (function () {
+    function HomeViewModel(constantViewModel) {
         this.selection = "";
+        this.constantViewModel = constantViewModel;
     }
     HomeViewModel.prototype.OnShowAllGroups = function () {
         alert("showing all groups");
@@ -39,7 +41,9 @@
     HomeViewModel.prototype.OnPickGroup = function () {
         alert("picking group");
         document.getElementById("homeView").style.visibility = "hidden";
+        this.constantViewModel.previousPage.push(0 /* HOMEVIEWMODEL */);
         document.getElementById("groupView").style.visibility = "visible";
+        this.constantViewModel.currentPage = 1 /* GROUPVIEWMODEL */;
     };
     HomeViewModel.prototype.Refresh = function () {
     };

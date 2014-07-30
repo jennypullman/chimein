@@ -1,6 +1,9 @@
-﻿class HomeViewModel {
+﻿///<reference path='../scripts/ConstantViewModel.ts' />
+class HomeViewModel {
     selection: string = "";
-    constructor() {
+    constantViewModel: ConstantViewModel;
+    constructor(constantViewModel: ConstantViewModel) {
+        this.constantViewModel = constantViewModel;
     }
     OnShowAllGroups(): void {
         alert("showing all groups");
@@ -39,7 +42,9 @@
     OnPickGroup(): void {
         alert("picking group");
         document.getElementById("homeView").style.visibility = "hidden";
+        this.constantViewModel.previousPage.push(viewModel.HOMEVIEWMODEL);
         document.getElementById("groupView").style.visibility = "visible";
+        this.constantViewModel.currentPage = viewModel.GROUPVIEWMODEL;
     }
     Refresh(): void {
     }

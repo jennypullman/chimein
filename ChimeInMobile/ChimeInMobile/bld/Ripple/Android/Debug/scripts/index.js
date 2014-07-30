@@ -15,6 +15,7 @@ var ChimeInMobile;
             document.addEventListener('deviceready', function () {
                 _this.onDeviceReady();
             }, false);
+            this.constantViewModel = new ConstantViewModel();
         };
 
         Application.prototype.onDeviceReady = function () {
@@ -31,14 +32,17 @@ var ChimeInMobile;
             var azureHelper = new AzureHelper();
             azureHelper.login();
 
-            var groupViewModel = new GroupViewModel();
-            var homeViewModel = new HomeViewModel();
-            var questionBoardViewModel = new QuestionBoardViewModel();
-            var pollBoardViewModel = new PollBoardViewModel();
+            var groupViewModel = new GroupViewModel(this.constantViewModel);
+            var homeViewModel = new HomeViewModel(this.constantViewModel);
+            var questionBoardViewModel = new QuestionBoardViewModel(this.constantViewModel);
+            var pollBoardViewModel = new PollBoardViewModel(this.constantViewModel);
             ko.applyBindings(groupViewModel, document.getElementById("groupViewHeader"));
             ko.applyBindings(homeViewModel, document.getElementById("createGroup"));
             ko.applyBindings(homeViewModel, document.getElementById("showGroups"));
             ko.applyBindings(homeViewModel, document.getElementById("pickGroup"));
+            ko.applyBindings(groupViewModel, document.getElementById("questionBoard"));
+            ko.applyBindings(groupViewModel, document.getElementById("pollBoard"));
+            ko.applyBindings(this.constantViewModel, document.getElementById("backButton"));
         };
 
         Application.prototype.onPause = function () {
