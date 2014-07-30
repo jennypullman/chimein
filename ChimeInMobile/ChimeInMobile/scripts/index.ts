@@ -28,6 +28,8 @@ module ChimeInMobile {
             ko.applyBindings(homeViewModel, document.getElementById("createGroup"));
             ko.applyBindings(homeViewModel, document.getElementById("showGroups"));
             ko.applyBindings(homeViewModel, document.getElementById("pickGroup"));
+            ko.applyBindings(groupViewModel, document.getElementById("questionBoard"));
+            ko.applyBindings(groupViewModel, document.getElementById("pollBoard"));
         }
 
         onPause(): void {

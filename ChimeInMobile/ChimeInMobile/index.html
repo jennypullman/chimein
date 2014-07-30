@@ -23,19 +23,20 @@
     <script src="scripts/index.js"></script>
     <div id="homeView">
         <select id="showGroups" data-bind="event:{change:OnChangeGroups}">
-
             <option id="allGroups">All Groups</option>
             <option id="byDate">Show Groups By Date</option>
-            <option id="byCategory" >Show Groups By Category</option>
-            <option id="favoriteGroups" >Favorite Groups</option>
-
-
+            <option id="byCategory">Show Groups By Category</option>
+            <option id="favoriteGroups">Favorite Groups</option>
         </select>
         <button id="createGroup" data-bind="event:{click:OnCreateGroup}">Create Group</button>
         <button id="pickGroup" data-bind="event:{click:OnPickGroup}">Pick Group</button>
     </div>
     <div id="groupView" style="visibility:hidden">
         <div id="groupViewHeader" data-bind="text: groupName"></div>
+        <div id="groupViewTabs">
+            <div id="questionBoard" data-bind="click:OnClickQuestionBoard">Question Board</div>
+            <div id="pollBoard" data-bind="click:OnClickPollBoard">Poll Board</div>
+        </div>
     </div>
     <script type="text/javascript">
         //ko.applyBindings({
