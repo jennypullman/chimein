@@ -16,8 +16,8 @@ module ChimeInMobile {
 
         applyBindings(user: string, azureHelper: AzureHelper): void {
             var groupViewModel = new GroupViewModel(this.constantViewModel, azureHelper);
-            var homeViewModel = new HomeViewModel(this.constantViewModel, azureHelper, user);
-            var questionBoardViewModel = new QuestionBoardViewModel(this.constantViewModel, azureHelper);
+            var homeViewModel = new HomeViewModel(this.constantViewModel, azureHelper, user, groupViewModel);
+            var questionBoardViewModel = new QuestionBoardViewModel(this.constantViewModel, azureHelper, groupViewModel);
             var pollBoardViewModel = new PollBoardViewModel(this.constantViewModel, azureHelper);
             ko.applyBindings(groupViewModel, document.getElementById("groupViewHeader"));
             ko.applyBindings(homeViewModel, document.getElementById("homeView"));
@@ -27,7 +27,9 @@ module ChimeInMobile {
             ko.applyBindings(groupViewModel, document.getElementById("questionBoard"));
             ko.applyBindings(groupViewModel, document.getElementById("pollBoard"));
             ko.applyBindings(this.constantViewModel, document.getElementById("backButton"));
-            alert("bindings worked");
+            ko.applyBindings(questionBoardViewModel, document.getElementById("replyAllButton"));
+            ko.applyBindings(homeViewModel, document.getElementById("addGroupButton"));
+           // alert("bindings worked");
             //var viewModel = {
             //    sample: ko.observable() // Initially blank
             //};
@@ -36,7 +38,7 @@ module ChimeInMobile {
 
         onDeviceReady(): void {
             // Handle the Cordova pause and resume events
-            alert("in device ready");
+           // alert("in device ready");
             document.addEventListener('pause', () => { this.onPause(); }, false);
             document.addEventListener('resume', () => { this.onResume(); }, false);
 

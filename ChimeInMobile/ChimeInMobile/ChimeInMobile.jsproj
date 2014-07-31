@@ -126,10 +126,10 @@
     <Content Include="index.html" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
-    <Content Include="scripts\jquery-2.1.1.intellisense.js" />
-    <Content Include="scripts\jquery-2.1.1.js" />
-    <Content Include="scripts\jquery-2.1.1.min.js" />
-    <Content Include="scripts\jquery-2.1.1.min.map" />
+    <Content Include="scripts\jquery-1.9.0.intellisense.js" />
+    <Content Include="scripts\jquery-1.9.0.js" />
+    <Content Include="scripts\jquery-1.9.0.min.js" />
+    <Content Include="scripts\jquery-1.9.0.min.map" />
     <Content Include="scripts\knockout-3.1.0.js" />
     <Content Include="services\mobile services\ChimeIn\service.js">
       <ConnectedServiceReference>ChimeIn</ConnectedServiceReference>

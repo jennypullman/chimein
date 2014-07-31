@@ -13,7 +13,6 @@
   <vs:features>
     <vs:feature>com.msopentech.azure-mobile-services@0.1.2</vs:feature>
     <vs:feature>org.apache.cordova.inappbrowser@0.4.0</vs:feature>
-    <vs:feature>org.apache.cordova.device@0.2.9</vs:feature>
   </vs:features>
   <vs:platformSpecificValues>
     <vs:platformSpecificWidget platformName="windows8" />

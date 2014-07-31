@@ -7,9 +7,6 @@
     <feature name="InAppBrowser">
         <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
     </feature>
-    <feature name="Device">
-        <param name="android-package" value="org.apache.cordova.device.Device" />
-    </feature>
     <name>ChimeInMobile</name>
     <description>
     A blank project that uses Apache Cordova to help you build an app that targets multiple mobile platforms: Android, iOS, Windows, and Windows Phone.
@@ -23,7 +20,6 @@
     <vs:features>
         <vs:feature>com.msopentech.azure-mobile-services@0.1.2</vs:feature>
         <vs:feature>org.apache.cordova.inappbrowser@0.4.0</vs:feature>
-        <vs:feature>org.apache.cordova.device@0.2.9</vs:feature>
     </vs:features>
     <vs:platformSpecificValues>
         <vs:platformSpecificWidget platformName="windows8" />

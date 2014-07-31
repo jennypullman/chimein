@@ -11,10 +11,6 @@
                         {
                             "xml": "<feature name=\"InAppBrowser\"><param name=\"android-package\" value=\"org.apache.cordova.inappbrowser.InAppBrowser\" /></feature>",
                             "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
-                            "count": 1
                         }
                     ]
                 }
@@ -23,9 +19,6 @@
     },
     "installed_plugins": {
         "com.msopentech.azure-mobile-services": {
-            "PACKAGE_NAME": "io.cordova.ChimeInMobile"
-        },
-        "org.apache.cordova.device": {
             "PACKAGE_NAME": "io.cordova.ChimeInMobile"
         }
     },

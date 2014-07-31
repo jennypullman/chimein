@@ -4,55 +4,59 @@ class AzureHelper {
     groups: Microsoft.WindowsAzure.MobileServiceTable;
     users: Microsoft.WindowsAzure.MobileServiceTable;
     groupUsers: Microsoft.WindowsAzure.MobileServiceTable;
+    groupQuestions: Microsoft.WindowsAzure.MobileServiceTable;
     user: string;
 
     constructor() {
     }
     getClient(callback: (client: Microsoft.WindowsAzure.MobileServiceClient) => void): void {
-        alert("in get client");
+        //alert("in get client");
         if (this.azureClient) {
-            alert("out get client if");
+            //alert("out get client if");
             callback(this.azureClient);
         }
         else {
             this.azureClient = new WindowsAzure.MobileServiceClient(
                 "https://chimein.azure-mobile.net/",
                 "JXYobPzySaNOpAAksQlMfAEUzGQcaB35");
-            alert("out get client");
+            //alert("out get client");
             callback(this.azureClient);
         }
     }
 
     login(azureClient: Microsoft.WindowsAzure.MobileServiceClient, callback: (user: any) => void): void {
-        alert("in login");
+        //alert("in login");
         if (this.user) {
-            alert("in get user");
+            //alert("in get user");
             callback(this.user);
         }
         else {
-            alert("in else login");
-            alert(this.azureClient);
+            //alert("in else login");
+            //alert(this.azureClient);
             azureClient.login("facebook").then((results) => {
-                alert("in facebook");
-                this.user = results.userId;
-                alert("in facebook, user: " + this.user);
+                console.log(results);
+                this.user = results.userId.split(":")[1];;
+                //alert(this.user);
+                //alert("in facebook, user: " + this.user);
                 //this.loggedIn = true;
                 this.getUsers();
 
-                this.users.where({ uid: results.userId }).read().then((success) => {
+                this.users.where({ uid: this.user }).read().then((success) => {
                     if (success.length > 0) {
                         console.log("User ID" + this.user);
                         console.log("in success");
-                        this.user = success[0].uid;
-                        alert("out login if");
+                        //alert("out login if");
+                        //this.getGroupUsers().insert({uid: this.user, gid: "Lydia's Group" }).done(() => {
+                        //    
+                        //});
                         callback(this.user);
                     }
                     else {
-                        console.log("in else");
+                        //console.log("in else");
                         this.users.insert({ uid: results.userId }).done(() => {
-                            alert("IT WORKED");
+                            //alert("eIT WORKED");
                         });
-                        alert("out login else");
+                        //alert("out login else");
                         callback(this.user);
                     }
                 }, (error) => {
@@ -85,5 +89,9 @@ class AzureHelper {
     getGroupUsers(): Microsoft.WindowsAzure.MobileServiceTable {
         this.groupUsers = this.groupUsers || this.azureClient.getTable('groupUsers');
         return this.groupUsers;
+    }
+    getGroupQuestions(): Microsoft.WindowsAzure.MobileServiceTable {
+        this.groupQuestions = this.groupQuestions || this.azureClient.getTable('questions');
+        return this.groupQuestions;
     }
 }

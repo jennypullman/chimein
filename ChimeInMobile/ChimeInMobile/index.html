@@ -13,8 +13,7 @@
     <script src="cordova.js"></script>
 
     <!-- ChimeIn references -->
-    <script src="scripts/jquery-2.1.1.min.js"></script>
-    <script src="scripts/jquery-2.1.1.js"></script>
+    <script src="scripts/jquery-1.9.0.min.js"></script>
     <script src="scripts/bootstrap.js"></script>
     <script src="./services/mobile services/ChimeIn/service.js"></script>
     <script type='text/javascript' src='scripts/knockout-3.1.0.js'></script>
@@ -52,7 +51,7 @@
                     <input type="text" class="form-control" placeholder="Groups">
                 </div>
                 <!--<button type="submit" class="btn btn-default">Submit</button>-->
-    </form>
+            </form>
         </div><!-- /.navbar-collapse -->
         <!--<button type="button" class="btn btn-default navbar-btn" id="backButton" data-bind="event:{click:OnBack}">Back</button>-->
     </nav>
@@ -73,10 +72,28 @@
             </div>
         </div>
         <button id="pickGroup" data-bind="event:{click:OnPickGroup}">Pick Group</button>
-        <table>
-            <tbody id="groupList">
-            </tbody>
+        <table class="table table-striped" id="groupTable">
+            <tbody id="groupList"></tbody>
         </table>
+        <form class="form-horizontal" role="form" style="display:none" id="createGroupForm">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">Group Name</label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" id="groupNameInput" placeholder="Email">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" id="passwordInput" placeholder="Password">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default" data-bind="click:OnAddGroup" id="addGroupButton">Add Group</button>
+                </div>
+            </div>
+        </form>
     </div>
     <div id="groupView" style="display:none">
         <div class="jumbotron">
@@ -88,7 +105,22 @@
         </div>
 
     </div>
-    <div id="questionView" style="display:none"></div>
+    <div id="questionView" style="display:none">
+        <table class="table table-striped">
+            <tbody id="questionFeed"></tbody>
+        </table>
+        <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+            <form class="navbar-form navbar-left" role="search">
+                <!--<div class="form-group">
+                    <input type="text" class="form-control" placeholder="Send a question!">
+                </div>-->
+                <textarea class="form-control" rows="2" placeholder="Send a question!" id="questionArea"></textarea>
+                <button type="submit" class="btn btn-default" data-bind="click:OnAddQuestion" id="replyAllButton">Reply All</button>
+            </form>
+            <!--<textarea class="form-control" rows="2"></textarea>-->
+        </nav>
+
+    </div>
     <div id="pollView" style="display:inline"></div>
     <script type="text/javascript">
         //ko.applyBindings({

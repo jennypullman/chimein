@@ -4,6 +4,7 @@ class AzureHelper {
     groups: Microsoft.WindowsAzure.MobileServiceTable;
     users: Microsoft.WindowsAzure.MobileServiceTable;
     groupUsers: Microsoft.WindowsAzure.MobileServiceTable;
+    groupQuestions: Microsoft.WindowsAzure.MobileServiceTable;
     user: string;
 
     constructor() {
@@ -24,7 +25,7 @@ class AzureHelper {
     }
 
     login(azureClient: Microsoft.WindowsAzure.MobileServiceClient, callback: (user: any) => void): void {
-        alert("in login");
+        //alert("in login");
         if (this.user) {
             //alert("in get user");
             callback(this.user);
@@ -33,17 +34,17 @@ class AzureHelper {
             //alert("in else login");
             //alert(this.azureClient);
             azureClient.login("facebook").then((results) => {
-                //alert("in facebook");
-                this.user = results.userId;
+                console.log(results);
+                this.user = results.userId.split(":")[1];;
+                //alert(this.user);
                 //alert("in facebook, user: " + this.user);
                 //this.loggedIn = true;
                 this.getUsers();
 
-                this.users.where({ uid: results.userId }).read().then((success) => {
+                this.users.where({ uid: this.user }).read().then((success) => {
                     if (success.length > 0) {
                         console.log("User ID" + this.user);
                         console.log("in success");
-                        this.user = success[0].uid;
                         //alert("out login if");
                         //this.getGroupUsers().insert({uid: this.user, gid: "Lydia's Group" }).done(() => {
                         //    
@@ -53,7 +54,7 @@ class AzureHelper {
                     else {
                         //console.log("in else");
                         this.users.insert({ uid: results.userId }).done(() => {
-                            alert("IT WORKED");
+                            //alert("eIT WORKED");
                         });
                         //alert("out login else");
                         callback(this.user);
@@ -88,5 +89,9 @@ class AzureHelper {
     getGroupUsers(): Microsoft.WindowsAzure.MobileServiceTable {
         this.groupUsers = this.groupUsers || this.azureClient.getTable('groupUsers');
         return this.groupUsers;
+    }
+    getGroupQuestions(): Microsoft.WindowsAzure.MobileServiceTable {
+        this.groupQuestions = this.groupQuestions || this.azureClient.getTable('questions');
+        return this.groupQuestions;
     }
 }

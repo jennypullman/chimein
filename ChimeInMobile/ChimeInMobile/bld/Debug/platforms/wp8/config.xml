@@ -3,9 +3,6 @@
     <feature name="InAppBrowser">
         <param name="wp-package" value="InAppBrowser" />
     </feature>
-    <feature name="Device">
-        <param name="wp-package" value="Device" />
-    </feature>
     <name>ChimeInMobile</name>
     <description>
     A blank project that uses Apache Cordova to help you build an app that targets multiple mobile platforms: Android, iOS, Windows, and Windows Phone.
